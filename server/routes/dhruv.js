@@ -33,4 +33,8 @@ async function recurTeach(teachIds,index,studentList,res){
     recurTeach(teachIds,index+1, studentList,res);
 }
 
+router.get('/roster/:teachId', async(req,res) => {
+    console.log(req);
+})
+
 module.exports = router;
