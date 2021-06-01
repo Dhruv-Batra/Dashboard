@@ -3,7 +3,7 @@ import { Button, withStyles } from '@material-ui/core';
 export default function Navbar() {
     const StyledButton = withStyles({
         root: {
-          background: 'linear-gradient(45deg, #ff4447 30%, #ff4447 90%)', // gradient color l -> r
+          background: 'linear-gradient(45deg, #FDC700 30%, #FDC700 90%)', // gradient color l -> r
           borderRadius: 3,
           border: 0,
           color: 'black', // text color
@@ -17,7 +17,7 @@ export default function Navbar() {
       })(Button);
 
     return (
-        <div style={{ padding: "15px", backgroundColor: "gray", display: "flex", flexDirection: "row", justifyContent: "center" }}> 
+        <div style={{ padding: "15px", backgroundColor: "#003c6c", display: "flex", flexDirection: "row", justifyContent: "center" }}> 
         {/* placeholder bar color ^ */}
             <Link to="/" style={{ textDecoration: "none" }}>
                 <StyledButton style={{ marginLeft: "10px", marginRight: "10px"  }}>
