@@ -1,9 +1,38 @@
-import { Button, withStyles, TextField, InputAdornment } from '@material-ui/core';
+import { Button, withStyles, TextField, InputAdornment, Card } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import SearchBar from 'material-ui-search-bar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 export default function Student() {
     const [student, setStudent] = useState("");
+
+    const call = () => {
+        fetch('http://localhost:8080/dhruv/students')
+            .then((res) => {
+                return res.json();
+            })
+            .then((obj) => {
+                if (obj != null) {
+                    console.log("API CALL", obj);
+                    if (obj.length === 0) {
+                        obj = [{ volumeInfo: { title: "Book not found.", authors: [""] } }];
+                    }
+                    setStudent(obj);
+                } else {
+                    console.log("Oops.")
+                }
+            })
+    }
+
+  useEffect(() => {
+    call();
+  }, []);
+
+ 
+
+
+
+
     const StyledButton = withStyles({
         root: {
             background: "#003c6c", // gradient color l -> r
@@ -70,6 +99,7 @@ export default function Student() {
                         // maxWidth: 800
                     }}
                 />
+                
 
 
             </div>
