@@ -20,7 +20,7 @@ export default function Home() {
     },
   })(Button);
   return (
-    <div className="main-div">
+    <div className="main-div" >
       <div style={{ padding: "15px", backgroundColor: "#003c6c", display: "flex", flexDirection: "row", justifyContent: "center" }}>
         <Typography variant="h5" style={{color:"#FDC700"}}>Thomas Jefferson Elementary</Typography>
       </div>
@@ -32,6 +32,7 @@ export default function Home() {
         <br />
       </div>
 
+      {/*  */}
       <div className="calendar-container" style={{ position: "absolute", right: '70%', top: "45%" }}>
         <h2>Today's Events</h2>
       </div>
