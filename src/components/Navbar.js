@@ -17,10 +17,10 @@ export default function Navbar() {
       })(Button);
 
     return (
-        <div style={{ padding: "15px", backgroundColor: "gray"}}> 
+        <div style={{ padding: "15px", backgroundColor: "gray", display: "flex", flexDirection: "row", justifyContent: "center" }}> 
         {/* placeholder bar color ^ */}
             <Link to="/" style={{ textDecoration: "none" }}>
-                <StyledButton style={{ marginLeft: "10px", marginRight: "10px" }}>
+                <StyledButton style={{ marginLeft: "10px", marginRight: "10px"  }}>
                     Homepage
                 </StyledButton>
             </Link>
