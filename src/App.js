@@ -33,15 +33,18 @@ function App() {
         <h1>This is something I added</h1>
       </header> */}
       <BrowserRouter>
-      <Navbar />
-      <div>
-            <Switch>
-                <Route path="/teacher"  component={Teacher} />
-                <Route path="/student"  component={Student} />
-                <Route path="/classes"  component={Classes} />
-                <Route path="/calendar"  component={Calendar} />
-                <Route path="/" exact component={Home} />   
-            </Switch>
+        {/* <Navbar /> */}
+        <div>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <div>
+              <Navbar />
+              <Route path="/teacher" component={Teacher} />
+              <Route path="/student" component={Student} />
+              <Route path="/classes" component={Classes} />
+              <Route path="/calendar" component={Calendar} />
+            </div>
+          </Switch>
         </div>
       </BrowserRouter>
     </div>
