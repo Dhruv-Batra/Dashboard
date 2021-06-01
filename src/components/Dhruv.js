@@ -9,8 +9,6 @@ export default function Dhruv(){
         })
     })
 
-    console.log('hello');
-
     return(
         <div>
         
