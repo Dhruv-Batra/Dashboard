@@ -12,8 +12,6 @@ import Student from './components/Student/Student'
 import Teacher from './components/Teacher/Teacher'
 
 import Navbar from './components/Navbar'
-import Dhruv from './components/Dhruv'
-import Abby from './components/Abby'
 
 // nolan changed this
 function App() {
@@ -42,8 +40,6 @@ function App() {
                 <Route path="/student"  component={Student} />
                 <Route path="/classes"  component={Classes} />
                 <Route path="/calendar"  component={Calendar} />
-                <Route path="/dhruv" component ={Dhruv} />
-                <Route path="/abby" component ={Abby} />
                 <Route path="/" exact component={Home} />   
             </Switch>
         </div>
