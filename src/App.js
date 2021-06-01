@@ -1,8 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import Main from 'components/Main'
+import Main from "components/Main";
 
+// nolan changed this
 function App() {
   return (
     <div className="App">
@@ -19,9 +20,10 @@ function App() {
         >
           Learn React
         </a>
+        <h1>This is something I added</h1>
       </header>
       <BrowserRouter>
-        <Main/>
+        <Main />
       </BrowserRouter>
     </div>
   );
