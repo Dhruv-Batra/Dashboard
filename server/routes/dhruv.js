@@ -48,29 +48,43 @@ router.delete('/delete-event', async(req,res) => {
     res.sendStatus(200);
 })
 
-// router.post('/move', async(req,res) => {
-//     const tarStudent = await db.collection('classes').
-//     console.log(tarStudent);
-//     res.send(tarStudent);
-// })
 
-    // router.post("/move", async (req, res) => {
-    //     const { studentId, currentTeacherId, targetTeacherId } = req.body;
-    //     const targetStudent = await db
-    //      .collection("classes")
-    //      .doc(currentTeacherId)
-    //      .collection("students")
-    //      .doc(studentId)
-    //      .get()
-    //     console.log(targetStudent);
-    //     // const targetTeacher = await db
-    //     // .collection("classes")
-    //     // .doc(targetTeacherId)
-    //     // .collection("students")
-    //     // .set({
-    //     //     targetStudent,
-    //     // });
-    // });
+router.post("/move", async (req, res) => {
+    const { studentId, currentTeacherId, targetTeacherId } = req.body;
+    console.log(req.body);
+    const targetStudent = await db
+      .collection("classes")
+      .doc(currentTeacherId)
+      .collection("students")
+      .doc(studentId)
+      .get();
+    const tarData = targetStudent.data();
+    console.log(tarData.name)
+    // const data = {
+    //     name: tarData.name,
+    //     address: tarData.address,
+    //     allergies: tarData.allergies,
+    //     birthday: tarData.birthday,
+    //     class_grade: tarData.class_grade,
+    //     grade_history: tarData.grade_history,
+    //     grade_level: tarData.grade_level,
+    //     teacherId: tarData.teacherId
+    // };
+    // const targetTeacher = await db
+    //   .collection("classes")
+    //   .doc(targetTeacherId)
+    //   .collection("students")
+    //   .doc(targetStudent.id).set(data);
+
+    // const delTargetStudent = db
+    //   .collection("classes")
+    //   .doc(currentTeacherId)
+    //   .collection("students")
+    //   .doc(studentId)
+    // await delTargetStudent.collection()
+    //await delTargetStudent.delete();
+})
+
 
 
 module.exports = router;
