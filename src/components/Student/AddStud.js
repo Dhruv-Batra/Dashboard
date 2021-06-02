@@ -35,10 +35,12 @@ export default function AddStud() {
     setOpen(false);
   };
 
+  const [teacherId,setTeacherId] = useState(null);
+
   function handleClick(){
     const studentData = {
-        teacherId: "0oG3nsOBuo6UnVYSo4Fc",
-        name: "Monica Green",
+        teacherId: teacherId,
+        name: "Rumpelstilskin",
         gradeLevel: 5,
         birthday: "September 23, 2012",
         address: "222 Sesame St.",
@@ -70,9 +72,10 @@ export default function AddStud() {
         <DialogTitle id="form-dialog-title">Add Student</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            To subscribe to this website, please enter your email address here. We will send updates
-            occasionally.
+                Fill out the following fields to add a student to the school's database.
           </DialogContentText>
+          <FormControl>
+            <InputLabel htmlFor="age-native-simple">Age</InputLabel>
           <TextField
             autoFocus
             margin="dense"
@@ -83,7 +86,7 @@ export default function AddStud() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>
           <Button onClick={handleClick} color="primary">
