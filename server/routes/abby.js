@@ -14,7 +14,7 @@ router.get("/teachers", async (req, res) => {
 });
 
 router.post("/teacher/add", async (req, res) => {
-  const { name, gradeLevel, employeeStatus, roomNumber, students } = req.body;
+  const { name, gradeLevel, employeeStatus, roomNumber } = req.body;
 
   console.log(req.body);
 
@@ -83,13 +83,30 @@ router.post("/student/update", async (req, res) => {
   const { studentId, teacherId, field, update } = req.body;
   console.log(req.body);
 
-  const fieldChange =  field: update ;
+  const fieldChange = {};
+
+  fieldChange[field] = update;
 
   const resp = await db
     .collection("classes")
     .doc(teacherId)
     .collection("students")
     .doc(studentId)
+    .update(fieldChange);
+  res.sendStatus(200);
+});
+
+router.post("/teacher/update", async (req, res) => {
+  const { teacherId, field, update } = req.body;
+  console.log(req.body);
+
+  const fieldChange = {};
+
+  fieldChange[field] = update;
+
+  const resp = await db
+    .collection("classes")
+    .doc(teacherId)
     .update(fieldChange);
   res.sendStatus(200);
 });
