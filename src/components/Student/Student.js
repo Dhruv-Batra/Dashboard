@@ -1,6 +1,6 @@
 import { Button, withStyles, TextField, InputAdornment } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
-import SearchBar from 'material-ui-search-bar';
+//import SearchBar from 'material-ui-search-bar';
 import { useState } from 'react';
 export default function Student() {
     const [student, setStudent] = useState("");
@@ -61,7 +61,7 @@ export default function Student() {
                 >
                     Search Student
                 </StyledButton> */}
-                <SearchBar
+                {/* <SearchBar
                     placeholder="Search Student"
                     onChange={() => console.log('onChange')}
                     onRequestSearch={() => console.log('onRequestSearch')}
@@ -69,7 +69,7 @@ export default function Student() {
                         // margin: '0 auto',
                         // maxWidth: 800
                     }}
-                />
+                /> */}
 
 
             </div>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../firebase')
+const axios = require('axios');
 
 router.get('/events', async(req, res) => {
     const snapshot = await db.collection('events').get();
@@ -33,8 +34,19 @@ async function recurTeach(teachIds,index,studentList,res){
     recurTeach(teachIds,index+1, studentList,res);
 }
 
-router.get('/roster/:teachId', async(req,res) => {
-    console.log(req);
+router.get('/roster', async(req,res) => {
+    let teachSnapshot = await db.collection('classes').doc(req.query.teachId).collection('students').get();
+    var studentList = {};
+    teachSnapshot.forEach((student) => {
+        studentList[student.id]=student.data();
+    })
+    res.send(studentList)
 })
+
+router.delete('/delete-event', async(req,res) => {
+    await db.collection('events').doc(req.query.eventId).delete();
+    res.sendStatus(200);
+})
+
 
 module.exports = router;
