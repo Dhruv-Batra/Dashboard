@@ -7,7 +7,7 @@ import {
   Paper,
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import SearchBar from "material-ui-search-bar";
+//import SearchBar from "material-ui-search-bar";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayStudent from "./DisplayStudent";
@@ -80,7 +80,7 @@ export default function Student() {
         className="search-button-container"
         style={{ position: "absolute", left: "25%", top: "26%" }}
       >
-        <SearchBar
+        {/* <SearchBar
           placeholder="Search Student"
           onChange={() => console.log("onChange")}
           onRequestSearch={() => console.log("onRequestSearch")}
@@ -90,7 +90,7 @@ export default function Student() {
               // maxWidth: 800,
             }
           }
-        />
+        /> */}
 
         {/* <div>
           <DisplayStudent student={student} />
