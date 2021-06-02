@@ -19,7 +19,7 @@ import Navbar from './components/Navbar'
 // nolan changed this
 function App() {
   return (
-    <div className="App" style={{height: "753px", backgroundColor: "lightgray", }} >
+    <div className="App" style={{height: "753px", alignItems: "center", backgroundColor: "lightgray", backgroundRepeat: "no-repeat", backgroundImage: `url(https://cdn.discordapp.com/attachments/849373816395661343/849633543768244244/unknown.png)`}} >
       {/* style={{ backgroundImage: `url(https://cdn.discordapp.com/attachments/744777234430033920/849370516896350268/wallpaperbetter.com_1920x10802.jpg)` }} */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
