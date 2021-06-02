@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 export default function Abby() {
   useEffect(() => {
-    //     fetch("http://localhost:8080/abby/teachers")
+    //     fetch("http://localhost:8080/teacher/get")
     //       .then((response) => response.json())
     //       .then((response) => console.log(response));
     // const teacherData = {
@@ -11,7 +11,7 @@ export default function Abby() {
     //   roomNumber: 110,
     //   employeeStatus: "full time",
     // };
-    // fetch("http://localhost:8080/abby/teacher/add", {
+    // fetch("http://localhost:8080/teacher/add", {
     //   method: "POST",
     //   headers: {
     //     Accept: "application/json",
@@ -34,7 +34,7 @@ export default function Abby() {
     //     phoneNumber: "(804) 894-4389",
     //   },
     // };
-    // fetch("http://localhost:8080/abby/student/add", {
+    // fetch("http://localhost:8080/student/add", {
     //   method: "POST",
     //   headers: {
     //     Accept: "application/json",
@@ -48,7 +48,7 @@ export default function Abby() {
     //   time: 1000,
     //   title: "School Bake Sale",
     // };
-    // fetch("http://localhost:8080/abby/event/add", {
+    // fetch("http://localhost:8080/events/add", {
     //   method: "POST",
     //   headers: {
     //     Accept: "application/json",
@@ -62,7 +62,7 @@ export default function Abby() {
     //   field: "address",
     //   update: "2713 Route Dr.",
     // };
-    // fetch("http://localhost:8080/abby/student/update", {
+    // fetch("http://localhost:8080/student/update", {
     //   method: "POST",
     //   headers: {
     //     Accept: "application/json",
@@ -75,7 +75,7 @@ export default function Abby() {
     //   field: "name",
     //   update: "Ashley Hewlett",
     // };
-    // fetch("http://localhost:8080/abby/teacher/update", {
+    // fetch("http://localhost:8080/teacher/update", {
     //   method: "POST",
     //   headers: {
     //     Accept: "application/json",
