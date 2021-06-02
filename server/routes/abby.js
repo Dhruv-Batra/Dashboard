@@ -63,4 +63,35 @@ router.post("/student/add", async (req, res) => {
   res.sendStatus(200);
 });
 
+router.post("/event/add", async (req, res) => {
+  const { date, description, time, title } = req.body;
+
+  console.log(req.body);
+
+  const resp = await db.collection("events").add({
+    date,
+    description,
+    time,
+    title,
+  });
+
+  console.log("Added document with ID: ", resp.id);
+  res.sendStatus(200);
+});
+
+router.post("/student/update", async (req, res) => {
+  const { studentId, teacherId, field, update } = req.body;
+  console.log(req.body);
+
+  const fieldChange =  field: update ;
+
+  const resp = await db
+    .collection("classes")
+    .doc(teacherId)
+    .collection("students")
+    .doc(studentId)
+    .update(fieldChange);
+  res.sendStatus(200);
+});
+
 module.exports = router;
