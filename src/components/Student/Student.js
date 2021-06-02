@@ -1,10 +1,11 @@
-import { Button, withStyles, TextField, InputAdornment, Card } from '@material-ui/core';
+import { Button, withStyles, TextField, InputAdornment, Card, Paper } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import SearchBar from 'material-ui-search-bar';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import DisplayStudent from "./DisplayStudent"
 export default function Student() {
-    const [student, setStudent] = useState("");
+    const [student, setStudent] = useState([]);
 
     const call = () => {
         fetch('http://localhost:8080/dhruv/students')
@@ -47,7 +48,7 @@ export default function Student() {
 
         },
         label: {
-            //textTransform: 'capitalize',
+            
             fontSize: "18px"
         },
     })(Button);
@@ -71,25 +72,7 @@ export default function Student() {
             </div>
 
             <div className="search-button-container" style={{ position: "absolute", left: '25%', top: "26%" }}>
-                {/* <TextField
-                    id="outlined-basic"
-                    label="Search for a Student"
-                    onChange={handleStudentSearch}
-                    InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">
-                            <SearchIcon />
-                          </InputAdornment>)}}
-                />
-
-                <StyledButton
-                    style={{ marginLeft: "20px", top: "10px" }}
-                    variant="contained"
-                    color="secondary"
-                    onClick={console.log(student)}
-                >
-                    Search Student
-                </StyledButton> */}
+                
                 <SearchBar
                     placeholder="Search Student"
                     onChange={() => console.log('onChange')}
@@ -101,8 +84,10 @@ export default function Student() {
                 />
                 
 
-
+                <DisplayStudent student = {student} />
             </div>
+
+            
         </div>
     )
 }
