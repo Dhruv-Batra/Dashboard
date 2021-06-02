@@ -48,29 +48,70 @@ router.delete('/delete-event', async(req,res) => {
     res.sendStatus(200);
 })
 
-// router.post('/move', async(req,res) => {
-//     const tarStudent = await db.collection('classes').
-//     console.log(tarStudent);
-//     res.send(tarStudent);
-// })
+<<<<<<< HEAD
+=======
 
-    // router.post("/move", async (req, res) => {
-    //     const { studentId, currentTeacherId, targetTeacherId } = req.body;
-    //     const targetStudent = await db
-    //      .collection("classes")
-    //      .doc(currentTeacherId)
-    //      .collection("students")
-    //      .doc(studentId)
-    //      .get()
-    //     console.log(targetStudent);
-    //     // const targetTeacher = await db
-    //     // .collection("classes")
-    //     // .doc(targetTeacherId)
-    //     // .collection("students")
-    //     // .set({
-    //     //     targetStudent,
-    //     // });
-    // });
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
+router.post("/move", async (req, res) => {
+    const { studentId, currentTeacherId, targetTeacherId } = req.body;
+    console.log(req.body);
+    const targetStudent = await db
+      .collection("classes")
+      .doc(currentTeacherId)
+      .collection("students")
+      .doc(studentId)
+      .get();
+    const tarData = targetStudent.data();
+    console.log(tarData.name)
+<<<<<<< HEAD
+    const data = {
+        name: tarData.name,
+        address: tarData.address,
+        allergies: tarData.allergies,
+        birthday: tarData.birthday,
+        class_grade: tarData.class_grade,
+        grade_history: tarData.grade_history,
+        grade_level: tarData.grade_level,
+        teacherId: tarData.teacherId
+    };
+    // console.log(data);
+=======
+    // const data = {
+    //     name: tarData.name,
+    //     address: tarData.address,
+    //     allergies: tarData.allergies,
+    //     birthday: tarData.birthday,
+    //     class_grade: tarData.class_grade,
+    //     grade_history: tarData.grade_history,
+    //     grade_level: tarData.grade_level,
+    //     teacherId: tarData.teacherId
+    // };
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
+    // const targetTeacher = await db
+    //   .collection("classes")
+    //   .doc(targetTeacherId)
+    //   .collection("students")
+    //   .doc(targetStudent.id).set(data);
+<<<<<<< HEAD
+    const delTargetStudent = db
+      .collection("classes")
+      .doc(currentTeacherId)
+      .collection("students")
+      .doc(studentId)
+    await delTargetStudent.delete();
+})
+=======
+
+    // const delTargetStudent = db
+    //   .collection("classes")
+    //   .doc(currentTeacherId)
+    //   .collection("students")
+    //   .doc(studentId)
+    // await delTargetStudent.collection()
+    //await delTargetStudent.delete();
+})
+
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
 
 
 module.exports = router;
