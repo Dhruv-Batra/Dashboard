@@ -5,9 +5,9 @@ const axios = require("axios");
 
 router.get("/get", async (req, res) => {
   const snapshot = await db.collection("events").get();
-  const allEvents = {};
+  const allEvents = [];
   snapshot.forEach((doc) => {
-    allEvents[doc.id] = doc.data();
+    allEvents.push(doc.data());
   });
   console.log(allEvents);
   res.send(allEvents);
