@@ -52,9 +52,9 @@ export default function Student() {
     },
   })(Button);
 
-  const handleStudentSearch = (e) => {
-    setStudent(e.target.value);
-  };
+  //   const handleStudentSearch = (e) => {
+  //     setStudent(e.target.value);
+  //   };
 
   return (
     <div>
@@ -69,7 +69,7 @@ export default function Student() {
       </div>
       <div
         className="add-button-container"
-        style={{ position: "absolute", left: "57%", top: "27%" }}
+        style={{ position: "absolute", left: "81.5%", top: "30%" }}
       >
         <StyledButton variant="contained" color="primary">
           Add Student
@@ -80,7 +80,7 @@ export default function Student() {
         className="search-button-container"
         style={{ position: "absolute", left: "25%", top: "26%" }}
       >
-        <SearchBar
+        {/* <SearchBar
           placeholder="Search Student"
           onChange={() => console.log("onChange")}
           onRequestSearch={() => console.log("onRequestSearch")}
@@ -90,13 +90,20 @@ export default function Student() {
               // maxWidth: 800,
             }
           }
-        />
+        /> */}
 
         {/* <div>
           <DisplayStudent student={student} />
         </div> */}
       </div>
-      <div>
+      <div
+        style={{
+          top: "40%",
+          position: "absolute",
+          alignItems: "left",
+          marginLeft: "20px",
+        }}
+      >
         <DisplayStudent student={student} />
       </div>
     </div>

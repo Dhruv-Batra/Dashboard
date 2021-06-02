@@ -1,6 +1,24 @@
-export default function Calendar(){
-    return(
-        <div><h1>this is the calendar</h1>;</div>
-    )
-}
+import { useEffect } from "react";
 
+export default function Calendar() {
+  // function to get events
+  // GET all events
+  const getEvents = () => {
+    fetch("http://localhost:8080/dhruv/events")
+      .then((response) => response.json())
+      .then((resp) => {
+        console.log(resp);
+      });
+  };
+  useEffect(() => {
+    getEvents();
+  }, []);
+  //function to add events
+  // functio to delete events
+  // function to update events
+  return (
+    // display events
+
+    <div></div>
+  );
+}

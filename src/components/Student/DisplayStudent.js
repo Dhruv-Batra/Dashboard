@@ -1,92 +1,134 @@
-import { Typography } from "@material-ui/core"
+import { Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
+import SearchBar from "material-ui-search-bar";
 
 const useStyles = makeStyles({
-    table: {
-        'width': '60vw',
-
-    },
+  table: {
+    width: "97.5vw",
+  },
+  TableCell: {
+    position: "fixed",
+  },
 });
 
 export default function DisplayStudent(props) {
+  const classes = useStyles();
+  //   const [searched, setSearched] = useState("");
+  //   const [rows, setRows] = useState(props.student);
 
-    const classes = useStyles();
+  //   const requestSearch = (searchedVal) => {
+  //     const filteredRows = props.student.filter((row) => {
+  //       //return row.name.toLowerCase().includes(searchedVal.toLowerCase());
+  //       console.log(row);
+  //     });
+  //     setRows(filteredRows);
+  //   };
 
-    const StyledTableCell = withStyles((theme) => ({
-        head: {
-            backgroundColor: theme.palette.info.dark,
-            color: theme.palette.common.white,
-        },
-        body: {
-            fontSize: 14,
-        },
-        }))(TableCell);
-        
-        const StyledTableRow = withStyles((theme) => ({
-        root: {
-            '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.hover,
-            },
-        },
-        }))(TableRow);
+  //   const cancelSearch = () => {
+  //     setSearched("");
+  //     requestSearch(searched);
+  //   };
 
-if (props.student != null) {
+  const StyledTableCell = withStyles((theme) => ({
+    head: {
+      backgroundColor: theme.palette.info.dark,
+      color: theme.palette.common.white,
+    },
+    body: {
+      fontSize: 14,
+    },
+  }))(TableCell);
+
+  const StyledTableRow = withStyles((theme) => ({
+    root: {
+      "&:nth-of-type(odd)": {
+        backgroundColor: theme.palette.action.hover,
+      },
+    },
+  }))(TableRow);
+
+  if (props.student != null) {
     return (
-        <div>
-            <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                <StyledTableRow>
-                    <StyledTableCell style={{width: '30vh'}}>Hours from Now</StyledTableCell>
-                    <StyledTableCell align="right">Icon</StyledTableCell>
-                    <StyledTableCell align="right">Description</StyledTableCell>
-                    <StyledTableCell align="right">Temperature (F)</StyledTableCell>
-                    <StyledTableCell align="right">Feels Like</StyledTableCell>
+      <div>
+        <SearchBar
+          //value={searched}
+          placeholder="Search Student"
+          //onChange={(searchedVal) => requestSearch(searchedVal)}
+          //onCancelSearch={() => cancelSearch()}
+          style={
+            {
+              // margin: "0 auto",
+              // maxWidth: 800,
+            }
+          }
+        />
+        <TableContainer component={Paper} style={{ height: "400px" }}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <StyledTableRow>
+                <StyledTableCell>Student Name</StyledTableCell>
+                <StyledTableCell align="right">Grade Level</StyledTableCell>
+                <StyledTableCell align="right">Teacher ID</StyledTableCell>
+                <StyledTableCell align="right">Address</StyledTableCell>
+                <StyledTableCell align="right">Allergies</StyledTableCell>
+                <StyledTableCell align="right">Birthday</StyledTableCell>
+                <StyledTableCell align="right">
+                  Emergency Contact
+                </StyledTableCell>
+              </StyledTableRow>
+            </TableHead>
+            <TableBody>
+              {props.student.map((student, index) => (
+                <StyledTableRow key={index}>
+                  <StyledTableCell align="left" width="20%">
+                    <Typography variant="h6">{student.name}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">
+                      {student.gradeLevel
+                        ? student.gradeLevel
+                        : student.grade_level}
+                    </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">{student.teacherId}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">{student.address}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">
+                      {student.allergies ? student.allergies : "none"}
+                    </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">{student.birthday}</Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">
+                      {student.emergencyContact.name}
+                      <br />
+                      {student.emergencyContact.phoneNumber}
+                      <br />
+                      {student.emergencyContact.relationship}
+                    </Typography>
+                  </StyledTableCell>
                 </StyledTableRow>
-                </TableHead>
-                <TableBody>
-                {props.student.map((student,index) => (
-                    <StyledTableRow key={index}>
-                    <StyledTableCell align="right"><Typography variant="h5">{student.name}</Typography></StyledTableCell>
-                    </StyledTableRow>)
-                )}
-                </TableBody>
-            </Table>
-            </TableContainer>
-            <div style={{ padding: "10px", height: "360px", marginLeft: "17px", overflowY: "scroll" }}>
-                {
-                    props.student.map((student) => (
-                        <div>
-                            <div style={{ backgroundColor: "#fadfca", width: "20%", marginLeft: "auto", marginRight: "auto", padding: "10px", borderRadius: "15px" }}>
-                                <Typography variant="h5">{student.name}</Typography>
-                                {/* <Typography variant="h6">{}</Typography>
-                                <br />
-                                <StyledButton onClick={add(
-                                    book.volumeInfo.title,
-                                    book.volumeInfo.authors != null ? book.volumeInfo.authors[0] : "Author not found.",
-                                    book.volumeInfo.imageLinks != null ? book.volumeInfo.imageLinks.thumbnail : "https://img-premium.flaticon.com/png/512/1178/1178428.png?token=exp=1622443658~hmac=3e2be4c05df17924d62aeb20d3d1061f")} >
-                                    Add to Library
-                                </StyledButton> */}
-                            </div>
-                            <br />
-                        </div>
-                    ))
-                } <br />
-            </div>
-        </div>
-
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
     );
-
-}
-else {
+  } else {
     return null;
-}
+  }
 }
