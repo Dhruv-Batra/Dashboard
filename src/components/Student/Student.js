@@ -15,7 +15,7 @@ export default function Student() {
   const [student, setStudent] = useState([]);
 
   const call = () => {
-    fetch("http://localhost:8080/dhruv/students")
+    fetch("http://localhost:8080/student/get")
       .then((res) => {
         return res.json();
       })
