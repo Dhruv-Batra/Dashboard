@@ -48,6 +48,10 @@ router.delete('/delete-event', async(req,res) => {
     res.sendStatus(200);
 })
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
 router.post("/move", async (req, res) => {
     const { studentId, currentTeacherId, targetTeacherId } = req.body;
     console.log(req.body);
@@ -59,6 +63,7 @@ router.post("/move", async (req, res) => {
       .get();
     const tarData = targetStudent.data();
     console.log(tarData.name)
+<<<<<<< HEAD
     const data = {
         name: tarData.name,
         address: tarData.address,
@@ -70,11 +75,24 @@ router.post("/move", async (req, res) => {
         teacherId: tarData.teacherId
     };
     // console.log(data);
+=======
+    // const data = {
+    //     name: tarData.name,
+    //     address: tarData.address,
+    //     allergies: tarData.allergies,
+    //     birthday: tarData.birthday,
+    //     class_grade: tarData.class_grade,
+    //     grade_history: tarData.grade_history,
+    //     grade_level: tarData.grade_level,
+    //     teacherId: tarData.teacherId
+    // };
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
     // const targetTeacher = await db
     //   .collection("classes")
     //   .doc(targetTeacherId)
     //   .collection("students")
     //   .doc(targetStudent.id).set(data);
+<<<<<<< HEAD
     const delTargetStudent = db
       .collection("classes")
       .doc(currentTeacherId)
@@ -82,6 +100,18 @@ router.post("/move", async (req, res) => {
       .doc(studentId)
     await delTargetStudent.delete();
 })
+=======
+
+    // const delTargetStudent = db
+    //   .collection("classes")
+    //   .doc(currentTeacherId)
+    //   .collection("students")
+    //   .doc(studentId)
+    // await delTargetStudent.collection()
+    //await delTargetStudent.delete();
+})
+
+>>>>>>> 743e4833f26b620268eee39d63a09c5222de4d0c
 
 
 module.exports = router;
