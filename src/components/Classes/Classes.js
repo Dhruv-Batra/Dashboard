@@ -1,5 +1,4 @@
-export default function Classes(){
-    return(
-        <div></div>
-    )
+export default function Classes() {
+  //method to delete students
+  return <div></div>;
 }
