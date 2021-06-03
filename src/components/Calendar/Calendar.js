@@ -11,6 +11,8 @@ import {
 } from "@material-ui/core";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
+import { RiEditBoxLine } from "react-icons/ri";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function Calendar() {
   const useStyles = makeStyles((theme) => ({
@@ -114,6 +116,12 @@ export default function Calendar() {
 
                     <br />
                     <Typography variant="h6">{event.description}</Typography>
+                    <RiDeleteBinLine
+                      onClick={() => console.log("clicked delte")}
+                    />
+                    <RiEditBoxLine
+                      onClick={() => console.log("clicked edit")}
+                    />
                   </Paper>
                 </Grid>
               ))}
