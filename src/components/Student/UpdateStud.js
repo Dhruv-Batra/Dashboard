@@ -45,25 +45,16 @@ export default function AddStud() {
     setOpen(false);
   };
 
-  const [teacherId, setTeacherId] = useState('archives');
-  const [name, setName] = useState("Not Specified");
-  const [gradeLevel, setGradeLevel] = useState(0);
-  const [birthday, setBirthday] = useState("Not Specified");
-  const [address, setAddress] = useState("Not Specified");
-  const [allergies, setAllergies] = useState("Not Specified");
-  const [classGrade, setClassGrade] = useState("Not Specified");
-  const [gradeHistory, setGradeHistory] = useState([]);
-  const [ename, setEName] = useState("Not Specified");
-  const [erel, setERel] = useState("Not Specified");
-  const [ephone, setEPhone] = useState("Not Specified");
   const[field,setField] = useState('classGrade');
   const[update, setUpdate] = useState(null);
+  const[histSize, setHistSize] = useState(null);
 
 
   function handleClick() {
+    console.log(field+ " "+update)
     const studentUpdateData = {
-      studentId: "b1gdbpCtr3U2qVRlHbDw",
-      teacherId: "hMn0ELQIc3DNQoERbenX",
+      studentId: "054s6w8i15fo11111111",
+      teacherId: "iR8tDX6igwp9632a7XtK",
       field: field,
       update: update,
     };
@@ -73,25 +64,20 @@ export default function AddStud() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-    })
-    setTeacherId('archives');
-    setName("Not Specified");
-    setGradeLevel(0);
-    setBirthday("Not Specified");
-    setAddress("Not Specified");
-    setAllergies("Not Specified");
-    setClassGrade("Not Specified");
-    setGradeHistory([]);
-    setEName("Not Specified");
-    setERel("Not Specified");
-    setEPhone("Not Specified");
+      body: JSON.stringify(studentUpdateData),
+    });
+    setField('classGrade')
+    setUpdate(null);
     setOpen(false);
   }
 
   function handleGradeHistChange(e,i){
-    let temp=[...gradeHistory];
+    if(i===0)
+      var temp=[];
+    else
+      var temp=[...update];
     temp[i]=e;
-    setGradeHistory(temp);
+    setUpdate(temp);
   }
 
   return (
@@ -123,40 +109,61 @@ export default function AddStud() {
             autoWidth
           >
             <MenuItem value={'classGrade'}>Current Class Grade</MenuItem>
-            <MenuItem value={'teacherId'}>Teacher Id</MenuItem>
+            <MenuItem value={'teacherId'}>Teacher</MenuItem>
             <MenuItem value={'name'}>Name</MenuItem>
             <MenuItem value={'gradeLevel'}>Grade Level</MenuItem>
-            <MenuItem value={'birthday'}>Birthday</MenuItem>
+            <MenuItem value={'gradeHistory'}>Grade History</MenuItem>
             <MenuItem value={'address'}>Address</MenuItem>
             <MenuItem value={'allergies'}>Allergies</MenuItem>
-            <MenuItem value={'gradeHistory'}>Grade History</MenuItem>
-            <MenuItem value={'ename'}>Emergency Contact Name</MenuItem>
+            <MenuItem value={'birthday'}>Birthday</MenuItem>
+            {/* <MenuItem value={'ename'}>Emergency Contact Name</MenuItem>
             <MenuItem value={'erel'}>Emergency Contact Relationship</MenuItem>
-            <MenuItem value={'ephone'}>Emergecy Contact Phone Number</MenuItem>
+            <MenuItem value={'ephone'}>Emergecy Contact Phone Number</MenuItem> */}
         </Select>
           {field==='name'?<TextField
             id="name"
             autoFocus
             margin="dense"
             label="Name"
-            onChange={(e)=>setName(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
           />:<div></div> }
           {field==='teacherId'?<TextField
             id="teacherId"
             margin="dense"
             label="Teacher ID"
-            onChange={(e)=>setTeacherId(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
           />:<div></div> }
-          {(field==='gradeLevel' || field==='gradeHistory')?<div>
+          {(field==='gradeLevel')?<div>
           <br></br>
           <InputLabel>Grade Level</InputLabel>
           <Select
             id="gradeLevelSelector"
             margin="dense"
-            value={gradeLevel}
-            onChange={(event) => setGradeLevel(event.target.value)}
+            defaultValue={0}
+            value={update}
+            onChange={(event) => setUpdate(event.target.value)}
+            autoWidth
+          >
+            <MenuItem value={0}>K</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
+        </Select> 
+        </div> : <div></div> }
+        {field==='gradeHistory'?<div>
+          <br></br>
+          <InputLabel>Grade Level</InputLabel>
+          <Select
+            id="gradeLevelSelector"
+            margin="dense"
+            defaultValue={0}
+            value={histSize}
+            onChange={(event) => setHistSize(event.target.value)}
             autoWidth
           >
             <MenuItem value={0}>K</MenuItem>
@@ -168,7 +175,7 @@ export default function AddStud() {
             <MenuItem value={6}>6</MenuItem>
         </Select> 
         
-        {[...Array(gradeLevel)].map((x, i) =>
+        {[...Array(histSize)].map((x, i) =>
             <div>
                 <TextField
                     id='gradeHistory'
@@ -189,7 +196,7 @@ export default function AddStud() {
                 label="Birthday"
                 type="date"
                 className={classes.textField}
-                onChange={(e)=>setBirthday(e.target.value)}
+                onChange={(e)=>setUpdate(e.target.value)}
                 InputLabelProps={{
                 shrink: true,
                 }}
@@ -199,21 +206,21 @@ export default function AddStud() {
             id="address"
             margin="dense"
             label="Address"
-            onChange={(e)=>setAddress(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
           />:<div></div> }
         {field === 'allergies' ? <TextField
             id="allergies"
             margin="dense"
             label="Allergies"
-            onChange={(e)=>setAllergies(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
         /> : <div></div>}
         {field==='classGrade' ? <TextField
             id="classGrade"
             margin="dense"
             label="Current Grade in Class"
-            onChange={(e)=>setClassGrade(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
         />:<div></div> }
 
@@ -221,21 +228,21 @@ export default function AddStud() {
             id="ename"
             margin="dense"
             label="Emergency Contact Name"
-            onChange={(e)=>setEName(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
         />:<div></div>}
         {field==='erel'?<TextField
             id="erel"
             margin="dense"
             label="Emergency Contact Relationship"
-            onChange={(e)=>setERel(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
         />:<div></div>}
         {field==='ephone'?<TextField
             id="ephone"
             margin="dense"
             label="Emergency Contact Phone"
-            onChange={(e)=>setEPhone(e.target.value)}
+            onChange={(e)=>setUpdate(e.target.value)}
             fullWidth
         />:<div></div>}
         </DialogContent>
