@@ -1,3 +1,5 @@
+import AddTeach from "./AddTeach";
+
 export default function Teacher() {
   // method for getting teachers + use effect
 
@@ -7,6 +9,9 @@ export default function Teacher() {
     // map teachers to table, link to class page
 
     // button to update student
-    <div></div>
+    <>
+      <AddTeach />
+      <div></div>
+    </>
   );
 }
