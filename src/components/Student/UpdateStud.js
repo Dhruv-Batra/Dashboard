@@ -9,7 +9,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import update from 'immutability-helper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,8 +16,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
     border: 0,
     color: "#FDC700", // text color
-    height: 60,
-    width: 400,
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     fontSize: "18px",
   },
