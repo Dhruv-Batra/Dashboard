@@ -19,7 +19,7 @@ router.delete("/delete", async (req, res) => {
 });
 
 router.post("/add", async (req, res) => {
-  const { date, description, time, title } = req.body;
+  const { date, description, time, title, meridiem } = req.body;
 
   console.log(req.body);
 
@@ -28,6 +28,7 @@ router.post("/add", async (req, res) => {
     description,
     time,
     title,
+    meridiem,
   });
 
   console.log("Added document with ID: ", resp.id);
