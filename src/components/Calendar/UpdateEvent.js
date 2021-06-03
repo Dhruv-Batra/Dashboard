@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, makeStyles, Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,6 +9,8 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import { UpdaterContext } from "./Updater";
+import { RiEditBoxLine } from "react-icons/ri";
 
 const useStyles = makeStyles({
     root: {
@@ -23,15 +25,25 @@ const useStyles = makeStyles({
     },
 });
 
-export default function AddEvent(props) {
+export default function UpdateEvent(props) {
+    // props: id, title
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     //date, description, meridiem, time, title
-    const [date, setDate] = useState("mm/dd/yyyy");
-    const [meridiem, setMeridiem] = useState("am");
-    const [time, setTime] = useState(1);
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [date, setDate] = useState();
+    const [meridiem, setMeridiem] = useState();
+    const [time, setTime] = useState();
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const { update, setUpdate } = useContext(UpdaterContext);
+    //const [id, setId] = useState();
+    console.log("event ID", props.id);
+    console.log("event Title", props.title);
+    const id = props.id;
+    console.log("const id", id);
+
+    const [field, setField] = useState("name");
+    const [localUpdate, setLocalUpdate] = useState();
 
 
     const handleClickOpen = () => {
@@ -43,25 +55,27 @@ export default function AddEvent(props) {
     };
 
     function handleClick() {
-        const eventData = {
+        console.log("blahblahblah????")
+        const eventUpdatedData = {
             date,
             meridiem,
             time,
             title,
             description,
         };
-        props.setUpdate(Math.random());
-        console.log("eventDate", eventData);
-
-        fetch("http://localhost:8080/events/add", {
+        console.log("eventUpdate", eventUpdatedData);
+        if (eventUpdatedData)
+        
+        fetch("http://localhost:8080/events/update", {
             method: "POST",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(eventData),
+            body: JSON.stringify({"date": date, "meridiem": meridiem, "time": time, "title": title, "description": description, "id": props.id}),
         });
-
+        setUpdate(Math.random());
+        console.log(update);
         setOpen(false);
     }
 
@@ -73,17 +87,20 @@ export default function AddEvent(props) {
                 className={classes.root}
                 onClick={handleClickOpen}
             >
-                Edit Event
+                Add Event
       </Button> */}
+            <RiEditBoxLine
+                onClick={handleClickOpen}
+            />
             <Dialog
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
-                <DialogTitle id="form-dialog-title">Add Event</DialogTitle>
+                <DialogTitle id="form-dialog-title">Update Event</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Fill out the following fields to edit this event.
+                        Fill out any fields you wish to update for the {props.title} event.
           </DialogContentText>
                     <TextField
                         autoFocus
@@ -118,7 +135,9 @@ export default function AddEvent(props) {
                         onChange={(event) => setTime(event.target.value)}
                         autoWidth
                     >
-
+                        {/* <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem> */}
                         <MenuItem value="1">1</MenuItem>
                         <MenuItem value="2">2</MenuItem>
                         <MenuItem value="3">3</MenuItem>
@@ -140,10 +159,21 @@ export default function AddEvent(props) {
                         onChange={(event) => setMeridiem(event.target.value)}
                         autoWidth
                     >
+                        {/* <MenuItem value={""}>
+                            <em>None</em>
+                        </MenuItem> */}
                         <MenuItem value={"am"}>am</MenuItem>
                         <MenuItem value={"pm"}>pm</MenuItem>
                     </Select>
 
+                    {/* <TextField
+                        autoFocus
+                        margin="dense"
+                        id="room number"
+                        label="Room Number"
+                        fullWidth
+                        onChange={(event) => setRoomNumber(event.target.value)}
+                    /> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">

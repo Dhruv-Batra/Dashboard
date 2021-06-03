@@ -144,7 +144,7 @@ export default function Calendar() {
     getEvents();
     console.log("update", update);
   }, [update]);
-  //function to add events - DONE (need to figure out how to get it to update)
+  //function to add events - DONE
 
 
 
@@ -183,10 +183,10 @@ export default function Calendar() {
     //   ))}
     // </div>
     <div classname="big-boi-div">
-      
+
       <br /> <br /> <br /> <br />
       <AddEvent setUpdate={setUpdate} />
-      
+
       <div className="card-container">
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
@@ -210,19 +210,21 @@ export default function Calendar() {
                     <br />
                     <Typography variant="h6">{event.description}</Typography>
                     <RiDeleteBinLine
-                      onClick={() => fetch("http://localhost:8080/events/delete", { method: 'DELETE', headers: { "Accept": "application/json", "Content-Type": "application/json", }, body: JSON.stringify({ "id": event.id }) })
-                      // .then((res) => {
-                      //     return res.json();
-                      // })
-                      .then((obj) => {
-                        console.log("deleting", obj);
-                        setUpdate(Math.random());
-                      })
-                    }
+                      onClick={() =>
+                        fetch("http://localhost:8080/events/delete", { method: 'DELETE', headers: { "Accept": "application/json", "Content-Type": "application/json", }, body: JSON.stringify({ "id": event.id }) })
+                          // .then((res) => {
+                          //     return res.json();
+                          // })
+                          .then((obj) => {
+                            console.log("deleting", obj);
+                            setUpdate(Math.random());
+                          })
+                      }
                     />
-                    <RiEditBoxLine
+                    {/* <RiEditBoxLine
                       onClick={() => console.log("clicked edit")}
-                    />
+                    /> */}
+                    <UpdateEvent title={event.title} id={event.id} />
                   </Paper>
                 </Grid>
               ))}

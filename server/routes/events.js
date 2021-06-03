@@ -7,7 +7,7 @@ router.get("/get", async (req, res) => {
   const snapshot = await db.collection("events").get();
   const allEvents = [];
   snapshot.forEach((doc) => {
-    allEvents.push({...doc.data(), id: doc.id});
+    allEvents.push({ ...doc.data(), id: doc.id });
   });
   console.log(allEvents);
   res.send(allEvents);
@@ -36,16 +36,40 @@ router.post("/add", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  const { eventId, field, update } = req.body;
-  console.log(req.body);
+  const { date, meridiem, time, title, description, id } = req.body;
+  console.log("starting update");
+  console.log("body:", req.body);
+  // og: eventId, field, update
+  //   date,
+  //   meridiem,
+  //   time,
+  //   title,
+  //   description,
 
   const fieldChange = {};
 
-  fieldChange[field] = update;
+  if(date){
+    fieldChange["date"] = date;
+  }
+  if(meridiem){
+    fieldChange["meridiem"] = meridiem;
+  }
+  if(time){
+    fieldChange["time"] = time;
+  }
+  if(title){
+    fieldChange["title"] = title;
+  }
+  if(description){
+    fieldChange["description"] = description;
+  }
+  console.log("fieldChange", fieldChange);
+  //fieldChange[field] = update;
+  console.log(id); // event id is now not undefined
 
   const resp = await db
-    .collection("classes")
-    .doc(eventId)
+    .collection("events")
+    .doc(id)
     .update(fieldChange);
   res.sendStatus(200);
 });
