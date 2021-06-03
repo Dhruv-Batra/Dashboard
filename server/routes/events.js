@@ -7,14 +7,14 @@ router.get("/get", async (req, res) => {
   const snapshot = await db.collection("events").get();
   const allEvents = [];
   snapshot.forEach((doc) => {
-    allEvents.push(doc.data());
+    allEvents.push({...doc.data(), id: doc.id});
   });
   console.log(allEvents);
   res.send(allEvents);
 });
 
 router.delete("/delete", async (req, res) => {
-  await db.collection("events").doc(req.query.eventId).delete();
+  await db.collection("events").doc(req.body.id).delete();
   res.sendStatus(200);
 });
 
