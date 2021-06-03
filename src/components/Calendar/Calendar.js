@@ -13,6 +13,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import { RiEditBoxLine } from "react-icons/ri";
 import { RiDeleteBinLine } from "react-icons/ri";
+import AddEvent from "./AddEvent";
 
 export default function Calendar() {
   const useStyles = makeStyles((theme) => ({
@@ -57,6 +58,32 @@ export default function Calendar() {
         merB = b.meridiem;
 
       // switch it to military time
+      if (timeA.toString() === "12"){
+        console.log("timeA === 12");
+        if (merA === "am"){
+          merA = "pm";
+        }
+        if (merA === "pm"){
+          merA = "am";
+        }
+        console.log("switched")
+      }
+
+      if (timeB.toString() === "12"){
+        console.log("timeB === 12");
+        if (merB === "am"){
+          merB = "pm";
+        }
+        if (merB === "pm"){
+          merB = "am";
+        }
+        console.log("switched")
+      }
+      console.log(a.title, merA, merB, "times", timeA, timeB)
+      // ^ necessary because 12pm is Noon, not Midnight
+
+
+
       if (merA === "am") {
         timeA = timeA * 100;
       } else {
@@ -113,7 +140,10 @@ export default function Calendar() {
   useEffect(() => {
     getEvents();
   }, []);
-  //function to add events
+  //function to add events - DONE
+
+
+
   // functio to delete events
   // function to update events
 
@@ -148,6 +178,7 @@ export default function Calendar() {
     //   ))}
     // </div>
     <div classname="big-boi-div">
+      <AddEvent />
       <div className="card-container">
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
