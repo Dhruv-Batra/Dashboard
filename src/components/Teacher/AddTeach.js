@@ -43,10 +43,10 @@ export default function AddTeach() {
 
   function handleClick() {
     const teacherData = {
-      name: { name },
-      employeeStatus: { employeeStatus },
-      roomNumber: { roomNumber },
-      gradeLevel: { gradeLevel },
+      name,
+      employeeStatus,
+      roomNumber,
+      gradeLevel,
     };
 
     fetch("http://localhost:8080/teacher/add", {
@@ -79,7 +79,7 @@ export default function AddTeach() {
         <DialogTitle id="form-dialog-title">Add Teacher</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Fill out the following fields to add a student to the school's
+            Fill out the following fields to add a teacher to the school's
             database.
           </DialogContentText>
           <TextField

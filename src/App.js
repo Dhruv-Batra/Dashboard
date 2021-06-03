@@ -15,14 +15,14 @@ import Dhruv from "./components/Dhruv";
 import Abby from "./components/Abby";
 
 import Navbar from "./components/Navbar";
-
+import Footer from "./components/Footer";
 // nolan changed this
 function App() {
   return (
     <div
       className="App"
       style={{
-        height: "900px",
+        height: "1000px",
         alignItems: "center",
         backgroundColor: "lightgray",
         backgroundRepeat: "no-repeat",
@@ -30,22 +30,6 @@ function App() {
         backgroundImage: `url(https://cdn.discordapp.com/attachments/849373816395661343/849633543768244244/unknown.png)`,
       }}
     >
-      {/* style={{ backgroundImage: `url(https://cdn.discordapp.com/attachments/744777234430033920/849370516896350268/wallpaperbetter.com_1920x10802.jpg)` }} */}
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <h1>This is something I added</h1>
-      </header> */}
       <BrowserRouter>
         {/* <Navbar /> */}
         <div>
@@ -63,6 +47,9 @@ function App() {
           </Switch>
         </div>
       </BrowserRouter>
+      <div style={{ position: "fixed", bottom: 0, width: "100%" }}>
+        <Footer></Footer>
+      </div>
     </div>
   );
 }
