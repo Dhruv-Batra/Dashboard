@@ -209,35 +209,35 @@ export default function AddStud() {
             onChange={(e)=>setAllergies(e.target.value)}
             fullWidth
         /> : <div></div>}
-        {field===classGrade ? <TextField
+        {field==='classGrade' ? <TextField
             id="classGrade"
             margin="dense"
             label="Current Grade in Class"
             onChange={(e)=>setClassGrade(e.target.value)}
             fullWidth
         />:<div></div> }
-        
-        <TextField
+
+        {field==='ename'?<TextField
             id="ename"
             margin="dense"
             label="Emergency Contact Name"
             onChange={(e)=>setEName(e.target.value)}
             fullWidth
-        />
-        <TextField
+        />:<div></div>}
+        {field==='erel'?<TextField
             id="erel"
             margin="dense"
             label="Emergency Contact Relationship"
             onChange={(e)=>setERel(e.target.value)}
             fullWidth
-        />
-        <TextField
+        />:<div></div>}
+        {field==='ephone'?<TextField
             id="ephone"
             margin="dense"
             label="Emergency Contact Phone"
             onChange={(e)=>setEPhone(e.target.value)}
             fullWidth
-        />
+        />:<div></div>}
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
