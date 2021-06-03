@@ -19,6 +19,14 @@ const useStyles = makeStyles({
     TableCell: {
       position: "fixed",
     },
+    root: {
+      background: "#003c6c", // gradient color l -> r
+      borderRadius: 3,
+      border: 0,
+      color: "#FDC700", // text color
+      boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+      fontSize: "18px",
+    },
   });
 
 export default function DisplayTeacher ({teacher}){
@@ -69,6 +77,7 @@ export default function DisplayTeacher ({teacher}){
                     <StyledTableCell align="right">Status</StyledTableCell>
                     <StyledTableCell align="right">Room Number</StyledTableCell>
                     <StyledTableCell align="right">Update Information</StyledTableCell>
+                    <StyledTableCell align="right">View Roster</StyledTableCell>
                   </StyledTableRow>
                 </TableHead>
                 <TableBody>
@@ -88,6 +97,13 @@ export default function DisplayTeacher ({teacher}){
                       </StyledTableCell>
                       <StyledTableCell align="right">
                           <UpdateTeach/>
+                      </StyledTableCell>
+                      <StyledTableCell align="right">
+                          <Button
+                              className={classes.root}
+                          >
+                            View Roster
+                          </Button>
                       </StyledTableCell>
                     </StyledTableRow>
                   ))}
