@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function AddEvent() {
+export default function AddEvent(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     //date, description, meridiem, time, title
@@ -50,7 +50,7 @@ export default function AddEvent() {
             title,
             description,
         };
-
+        props.setUpdate(Math.random());
         console.log("eventDate", eventData);
 
         fetch("http://localhost:8080/events/add", {

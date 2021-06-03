@@ -38,6 +38,7 @@ export default function Calendar() {
   const [event, setEvent] = useState([]);
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
+  const [update, setUpdate] = useState("");
 
   // DATE SORT
 
@@ -58,23 +59,23 @@ export default function Calendar() {
         merB = b.meridiem;
 
       // switch it to military time
-      if (timeA.toString() === "12"){
+      if (timeA.toString() === "12") {
         console.log("timeA === 12");
-        if (merA === "am"){
+        if (merA === "am") {
           merA = "pm";
         }
-        if (merA === "pm"){
+        if (merA === "pm") {
           merA = "am";
         }
         console.log("switched")
       }
 
-      if (timeB.toString() === "12"){
+      if (timeB.toString() === "12") {
         console.log("timeB === 12");
-        if (merB === "am"){
+        if (merB === "am") {
           merB = "pm";
         }
-        if (merB === "pm"){
+        if (merB === "pm") {
           merB = "am";
         }
         console.log("switched")
@@ -139,12 +140,14 @@ export default function Calendar() {
   };
   useEffect(() => {
     getEvents();
-  }, []);
+    console.log("update", update);
+  }, [update]);
   //function to add events - DONE
 
 
 
-  // functio to delete events
+  // function to delete events - DONE (check onclick of the delete icon)
+
   // function to update events
 
   //useStyles
@@ -178,7 +181,7 @@ export default function Calendar() {
     //   ))}
     // </div>
     <div classname="big-boi-div">
-      <AddEvent />
+      <AddEvent setUpdate={setUpdate} />
       <div className="card-container">
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
@@ -189,6 +192,7 @@ export default function Calendar() {
                     <Typography variant="h4">
                       <Box fontWeight="fontWeightBold" m={1}>
                         {event.date}
+                        {console.log(event.id)}
                       </Box>
                     </Typography>
 
@@ -201,7 +205,15 @@ export default function Calendar() {
                     <br />
                     <Typography variant="h6">{event.description}</Typography>
                     <RiDeleteBinLine
-                      onClick={() => console.log("clicked delte")}
+                      onClick={() => fetch("http://localhost:8080/events/delete", { method: 'DELETE', headers: { "Accept": "application/json", "Content-Type": "application/json", }, body: JSON.stringify({ "id": event.id }) })
+                      // .then((res) => {
+                      //     return res.json();
+                      // })
+                      .then((obj) => {
+                        console.log("deleting", obj);
+                        setUpdate(Math.random());
+                      })
+                    }
                     />
                     <RiEditBoxLine
                       onClick={() => console.log("clicked edit")}
