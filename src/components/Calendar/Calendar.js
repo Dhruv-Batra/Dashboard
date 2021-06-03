@@ -38,8 +38,9 @@ export default function Calendar() {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
 
+  // DATE SORT
+
   const compareDate = (a, b) => {
-    //console.log("name restaurants", props.restaurants);
     let dateA = a.date,
       dateB = b.date;
     if (dateA < dateB) {
@@ -48,13 +49,44 @@ export default function Calendar() {
     if (dateA > dateB) {
       return 1;
     }
+    if (dateA === dateB) {
+      //Dates are equal, do a time sort
+      let timeA = a.time,
+        timeB = b.time;
+      let merA = a.meridiem,
+        merB = b.meridiem;
+
+      // switch it to military time
+      if (merA === "am") {
+        timeA = timeA * 100;
+      } else {
+        timeA = timeA + 12;
+        timeA = timeA * 100;
+      }
+
+      if (merB === "am") {
+        timeB = timeB * 100;
+      } else {
+        timeB = timeB + 12;
+        timeB = timeB * 100;
+      }
+
+      if (timeA < timeB) {
+        return -1;
+      }
+      if (timeA > timeB) {
+        return 1;
+      }
+      return 0;
+    }
     return 0;
   }
 
-  function sortDate (events) {
+  function sortDate(events) {
     let newArray = events.sort(compareDate);
     setEvent([...newArray]);
   }
+
   // function to get events
   // GET all events
 
@@ -130,7 +162,7 @@ export default function Calendar() {
                     </Typography>
 
                     <br />
-                    <Typography variant="h5">{event.time}</Typography>
+                    <Typography variant="h5">{event.time + " " + event.meridiem}</Typography>
 
                     <br />
                     <Typography variant="h6">{event.title}</Typography>
