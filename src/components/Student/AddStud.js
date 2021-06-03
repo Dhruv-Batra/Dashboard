@@ -7,8 +7,10 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     background: "#003c6c", // gradient color l -> r
     borderRadius: 3,
@@ -19,7 +21,16 @@ const useStyles = makeStyles({
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     fontSize: "18px",
   },
-});
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+}));
 
 export default function AddStud() {
   const classes = useStyles();
@@ -33,24 +44,35 @@ export default function AddStud() {
     setOpen(false);
   };
 
-  const [teacherId, setTeacherId] = useState(null);
+  const [teacherId, setTeacherId] = useState('archives');
+  const [name, setName] = useState("Not Specified");
+  const [gradeLevel, setGradeLevel] = useState("Not Specified");
+  const [birthday, setBirthday] = useState("Not Specified");
+  const [address, setAddress] = useState("Not Specified");
+  const [allergies, setAllergies] = useState("Not Specified");
+  const [classGrade, setClassGrade] = useState("Not Specified");
+  const [ename, setEName] = useState("Not Specified");
+  const [erel, setERel] = useState("Not Specified");
+  const [ephone, setEPhone] = useState("Not Specified");
+
 
   function handleClick() {
     const studentData = {
       teacherId: teacherId,
-      name: "Rumpelstilskin",
-      gradeLevel: 5,
-      birthday: "September 23, 2012",
-      address: "222 Sesame St.",
-      allergies: null,
-      classGrade: 98.4,
+      name: name,
+      gradeLevel: gradeLevel,
+      birthday: birthday,
+      address: address,
+      allergies: allergies,
+      classGrade: classGrade,
       gradeHistory: [95.6, 94.3, 99.4, 98.7, 96.8],
       emergencyContact: {
-        name: "Tom Green",
-        relationship: "father",
-        phoneNumber: "(804) 894-4389",
+        name: ename,
+        relationship: erel,
+        phoneNumber: ephone,
       },
     };
+    console.log(studentData);
     fetch("http://localhost:8080/student/add", {
       method: "POST",
       headers: {
@@ -82,15 +104,93 @@ export default function AddStud() {
             Fill out the following fields to add a student to the school's
             database.
           </DialogContentText>
-          <InputLabel htmlFor="age-native-simple">Age</InputLabel>
           <TextField
+            id="name"
             autoFocus
             margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
+            label="Name"
+            onChange={(e)=>setName(e.target.value)}
             fullWidth
           />
+          <TextField
+            id="teacherId"
+            margin="dense"
+            label="Teacher ID"
+            onChange={(e)=>setTeacherId(e.target.value)}
+            fullWidth
+          />
+          <br></br><br></br>
+          <InputLabel>Grade Level</InputLabel>
+          <Select
+            id="gradeLevelSelector"
+            margin="dense"
+            value={gradeLevel}
+            onChange={(event) => setGradeLevel(event.target.value)}
+            autoWidth
+          >
+            <MenuItem value={"K"}>K</MenuItem>
+            <MenuItem value={"1"}>1</MenuItem>
+            <MenuItem value={"2"}>2</MenuItem>
+            <MenuItem value={"3"}>3</MenuItem>
+            <MenuItem value={"4"}>4</MenuItem>
+            <MenuItem value={"5"}>5</MenuItem>
+            <MenuItem value={"6"}>6</MenuItem>
+        </Select>
+        <br></br><br></br>
+        <form className={classes.container} noValidate>
+            <TextField
+                id="birthday"
+                label="Birthday"
+                type="date"
+                className={classes.textField}
+                onChange={(e)=>setBirthday(e.target.value)}
+                InputLabelProps={{
+                shrink: true,
+                }}
+            />
+        </form>
+        <TextField
+            id="address"
+            margin="dense"
+            label="Address"
+            onChange={(e)=>setAddress(e.target.value)}
+            fullWidth
+          />
+        <TextField
+            id="allergies"
+            margin="dense"
+            label="Allergies"
+            onChange={(e)=>setAllergies(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="classGrade"
+            margin="dense"
+            label="Current Grade"
+            onChange={(e)=>setClassGrade(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="ename"
+            margin="dense"
+            label="Emergency Contact Name"
+            onChange={(e)=>setEName(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="erel"
+            margin="dense"
+            label="Emergency Contact Relationship"
+            onChange={(e)=>setERel(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="ephone"
+            margin="dense"
+            label="Emergency Contact Phone"
+            onChange={(e)=>setEPhone(e.target.value)}
+            fullWidth
+        />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
