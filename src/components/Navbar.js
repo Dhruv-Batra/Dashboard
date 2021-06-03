@@ -22,11 +22,14 @@ export default function Navbar() {
 
   return (
     <div>
-      <AppBar position="sticky">
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton edge="start" color="inherit" onClick={handleMenu}>
             <MenuIcon />
+
+            <Typography>Menu</Typography>
           </IconButton>
+
           <Menu
             anchorEl={anchorEl}
             anchorOrigin={{
@@ -45,11 +48,11 @@ export default function Navbar() {
             <MenuItem onClick={() => history.push("/teacher")}>
               Teacher Directory
             </MenuItem>
-            <MenuItem onClick={() => history.push("/calendar")}>
-              Calendar
-            </MenuItem>
             <MenuItem onClick={() => history.push("/student")}>
               Student Directory
+            </MenuItem>
+            <MenuItem onClick={() => history.push("/calendar")}>
+              Calendar
             </MenuItem>
           </Menu>
         </Toolbar>
