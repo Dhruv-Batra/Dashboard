@@ -56,7 +56,6 @@ export default function Student() {
         style={{ position: "absolute", left: "75%", top: "30%" }}
       >
         <AddStud/>
-        <UpdateStud/>
         {/* <StyledButton 
           variant="contained" 
           color="primary"

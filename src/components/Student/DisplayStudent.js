@@ -10,6 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import SearchBar from "material-ui-search-bar";
 import Button from "@material-ui/core/Button";
+import UpdateStud from './UpdateStud'
 
 const useStyles = makeStyles({
   table: {
@@ -124,12 +125,7 @@ export default function DisplayStudent(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Button
-                      onClick={() => console.log("clicked update")}
-                      color="primary"
-                    >
-                      Update
-                    </Button>
+                      <UpdateStud/>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
