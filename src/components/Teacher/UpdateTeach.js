@@ -41,9 +41,9 @@ export default function UpdateTeach({ teacherName, teacherId }) {
 
   function handleClick() {
     const teacherUpdatedData = {
-      teacherId: { teacherId },
-      field: { field },
-      update: { update },
+      teacherId,
+      field,
+      update,
     };
 
     fetch("http://localhost:8080/teacher/update", {

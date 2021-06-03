@@ -43,10 +43,10 @@ export default function AddTeach() {
 
   function handleClick() {
     const teacherData = {
-      name: { name },
-      employeeStatus: { employeeStatus },
-      roomNumber: { roomNumber },
-      gradeLevel: { gradeLevel },
+      name,
+      employeeStatus,
+      roomNumber,
+      gradeLevel,
     };
 
     fetch("http://localhost:8080/teacher/add", {

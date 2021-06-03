@@ -4,10 +4,10 @@ const db = require("../firebase");
 
 router.get("/get", async (req, res) => {
   const snapshot = await db.collection("classes").get();
-  const classes = {};
+  const classes = [];
   snapshot.forEach((doc) => {
     console.log(doc.data());
-    classes[doc.id] = doc.data();
+    classes.push(doc.data());
   });
 
   res.send(classes);

@@ -41,10 +41,10 @@ export default function UpdateStud({ studentName, studentId, teacherId }) {
 
   function handleClick() {
     const studentUpdatedData = {
-      teacherId: { teacherId },
-      studentId: { studentId },
-      field: { field },
-      update: { update },
+      teacherId,
+      studentId,
+      field,
+      update,
     };
 
     fetch("http://localhost:8080/student/update", {
