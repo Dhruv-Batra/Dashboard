@@ -12,15 +12,15 @@ export default function Teacher() {
     // map teachers to table, link to class page
 
     // button to update student
-    <>
+    <div>
+      <br></br><br></br>
       <AddTeach />
       <UpdateTeach
-        teacherName="Deborah Cook"
         teacherId="0oG3nsOBuo6UnVYSo4Fc"
       />
 
       <ClassRedirect />
       <div></div>
-    </>
+    </div>
   );
 }

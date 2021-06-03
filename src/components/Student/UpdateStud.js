@@ -85,17 +85,17 @@ export default function AddStud() {
         className={classes.root}
         onClick={handleClickOpen}
       >
-        Update Student
+        Update
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Add Student</DialogTitle>
+        <DialogTitle id="form-dialog-title">Update Teacher Information</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Select a field to update, modify the field value, then click submit.
+            Fill out the following fields to update student details.
           </DialogContentText>
           <InputLabel>Choose a Field to Modify</InputLabel>
           <Select

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     border: 0,
     color: "#FDC700", // text color
     height: 60,
-    width: 400,
+    width: 346,
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     fontSize: "18px",
   },
@@ -90,7 +90,7 @@ export default function AddTeach() {
             fullWidth
             onChange={(event) => setName(event.target.value)}
           />
-
+          <br></br><br></br>
           <InputLabel>Employee Status</InputLabel>
           <Select
             id="employeeStatusSelector"
@@ -98,13 +98,10 @@ export default function AddTeach() {
             onChange={(event) => setEmployeeStatus(event.target.value)}
             autoWidth
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
             <MenuItem value="full time">Full Time</MenuItem>
             <MenuItem value="part time">Part Time</MenuItem>
           </Select>
-
+          <br></br><br></br>
           <InputLabel>Grade Level</InputLabel>
           <Select
             id="gradeLevelSelector"
@@ -112,9 +109,6 @@ export default function AddTeach() {
             onChange={(event) => setGradeLevel(event.target.value)}
             autoWidth
           >
-            <MenuItem value={""}>
-              <em>None</em>
-            </MenuItem>
             <MenuItem value={"K"}>K</MenuItem>
             <MenuItem value={"1"}>1</MenuItem>
             <MenuItem value={"2"}>2</MenuItem>
@@ -133,7 +127,7 @@ export default function AddTeach() {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>
           <Button onClick={handleClick} color="primary">
