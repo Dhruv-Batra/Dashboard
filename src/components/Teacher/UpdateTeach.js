@@ -32,7 +32,7 @@ export default function UpdateTeach({ teacherId }) {
   const [field, setField] = useState("name");
   const [update, setUpdate] = useState(null);
 
-  console.log(teacherId);
+  //console.log(teacherId);
 
   const handleClickOpen = () => {
     setOpen(true);
