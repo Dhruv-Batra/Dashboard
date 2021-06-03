@@ -113,8 +113,6 @@ router.post("/move", async (req, res) => {
     .collection("students")
     .doc(studentId);
   await delTargetStudent.delete();
-
-  res.sendStatus(200);
 });
 
 module.exports = router;
