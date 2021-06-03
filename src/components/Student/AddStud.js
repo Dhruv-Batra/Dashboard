@@ -74,20 +74,15 @@ export default function AddStud() {
         phoneNumber: ephone,
       },
     };
-    const studentUpdateData = {
-        studentId: "b1gdbpCtr3U2qVRlHbDw",
-        teacherId: "hMn0ELQIc3DNQoERbenX",
-        field: "address",
-        update: "2713 Route Dr.",
-      };
-      fetch("http://localhost:8080/student/update", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(studentUpdateData),
-      });
+    console.log(gradeHistory);
+    fetch("http://localhost:8080/student/add", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(studentData),
+    });
     setTeacherId('archives');
     setName("Not Specified");
     setGradeLevel(0);
@@ -171,6 +166,13 @@ export default function AddStud() {
                     onChange={(e)=>handleGradeHistChange(e.target.value,i)}
                     fullWidth
                 />
+                <Button
+                    style={{background: "#003c6c",color: "#FDC700"}}
+                    color='contained'
+                    variant='oulined'
+                >
+                    Add
+                </Button>
             </div>
         )}
         <br></br><br></br>
