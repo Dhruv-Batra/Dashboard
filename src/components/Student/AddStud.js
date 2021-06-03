@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import update from 'immutability-helper';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,7 @@ export default function AddStud() {
 
   const [teacherId, setTeacherId] = useState('archives');
   const [name, setName] = useState("Not Specified");
-  const [gradeLevel, setGradeLevel] = useState("Not Specified");
+  const [gradeLevel, setGradeLevel] = useState(0);
   const [birthday, setBirthday] = useState("Not Specified");
   const [address, setAddress] = useState("Not Specified");
   const [allergies, setAllergies] = useState("Not Specified");
@@ -61,7 +62,7 @@ export default function AddStud() {
     const studentData = {
       teacherId: teacherId,
       name: name,
-      gradeLevel: gradeLevel,
+      gradeLevel: gradeLevel.toString(),
       birthday: birthday,
       address: address,
       allergies: allergies,
@@ -82,6 +83,24 @@ export default function AddStud() {
       },
       body: JSON.stringify(studentData),
     });
+    setTeacherId('archives');
+    setName("Not Specified");
+    setGradeLevel(0);
+    setBirthday("Not Specified");
+    setAddress("Not Specified");
+    setAllergies("Not Specified");
+    setClassGrade("Not Specified");
+    setGradeHistory([]);
+    setEName("Not Specified");
+    setERel("Not Specified");
+    setEPhone("Not Specified");
+    setOpen(false);
+  }
+
+  function handleGradeHistChange(e,i){
+    let temp=[...gradeHistory];
+    temp[i]=e;
+    setGradeHistory(temp);
   }
 
   return (
@@ -137,15 +156,26 @@ export default function AddStud() {
             <MenuItem value={5}>5</MenuItem>
             <MenuItem value={6}>6</MenuItem>
         </Select>
+
         {[...Array(gradeLevel)].map((x, i) =>
-            <TextField
-                id='gradeHistory'
-                margin="dense"
-                label={i.toString()}
-                onChange={(e)=>setGradeHistory([...gradeHistory, e.target.value])}
-                fullWidth
-            />
+            <div>
+                <TextField
+                    id='gradeHistory'
+                    margin="dense"
+                    label={(i===0 ? 'Kindergarten Grade' : "Grade for grade "+i.toString())}
+                    onChange={(e)=>handleGradeHistChange(e.target.value,i)}
+                    fullWidth
+                />
+                <Button
+                    style={{background: "#003c6c",color: "#FDC700"}}
+                    color='contained'
+                    variant='oulined'
+                >
+                    Add
+                </Button>
+            </div>
         )}
+        <br></br><br></br>
         <form className={classes.container} noValidate>
             <TextField
                 id="birthday"
@@ -175,7 +205,7 @@ export default function AddStud() {
         <TextField
             id="classGrade"
             margin="dense"
-            label="Current Grade"
+            label="Current Grade in Class"
             onChange={(e)=>setClassGrade(e.target.value)}
             fullWidth
         />
