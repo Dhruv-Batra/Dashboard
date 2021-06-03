@@ -31,7 +31,7 @@ export default function AddTeach() {
   const [roomNumber, setRoomNumber] = useState();
   const [employeeStatus, setEmployeeStatus] = useState("full time");
 
-  console.log(gradeLevel);
+  //console.log(gradeLevel);
 
   const handleClickOpen = () => {
     setOpen(true);

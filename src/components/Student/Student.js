@@ -25,11 +25,11 @@ export default function Student() {
         if (obj != null) {
           console.log("API CALL", obj);
           if (obj.length === 0) {
-            obj = [{ volumeInfo: { title: "Book not found.", authors: [""] } }];
+            obj = [{}];
           }
           setStudent(obj);
         } else {
-          console.log("Oops.");
+          console.log("Error");
         }
       });
   };
@@ -56,13 +56,6 @@ export default function Student() {
         style={{ position: "absolute", left: "75%", top: "30%" }}
       >
         <AddStud/>
-        {/* <StyledButton 
-          variant="contained" 
-          color="primary"
-          onClick={handleClick}
-        >
-          Add Student
-        </StyledButton> */}
       </div>
 
       <div
