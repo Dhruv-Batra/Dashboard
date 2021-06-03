@@ -10,9 +10,9 @@ export default function Footer() {
   });
   return (
     <MuiThemeProvider theme={theme}>
-      <AppBar position="static" >
+      <AppBar position="static">
         <Toolbar>
-          <Typography variant="body1" color="white">
+          <Typography variant="body1" color="003c6c">
             © 2021 Launch
           </Typography>
         </Toolbar>

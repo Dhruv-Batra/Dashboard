@@ -9,6 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import SearchBar from "material-ui-search-bar";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   table: {
@@ -83,6 +84,7 @@ export default function DisplayStudent(props) {
                 <StyledTableCell align="right">
                   Emergency Contact
                 </StyledTableCell>
+                <StyledTableCell align="right">Update Student</StyledTableCell>
               </StyledTableRow>
             </TableHead>
             <TableBody>
@@ -120,6 +122,14 @@ export default function DisplayStudent(props) {
                       <br />
                       {student.emergencyContact.relationship}
                     </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button
+                      onClick={() => console.log("clicked update")}
+                      color="primary"
+                    >
+                      Update
+                    </Button>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
