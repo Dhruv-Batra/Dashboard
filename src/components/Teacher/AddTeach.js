@@ -57,6 +57,8 @@ export default function AddTeach() {
       },
       body: JSON.stringify(teacherData),
     });
+
+    setOpen(false);
   }
 
   return (
@@ -77,7 +79,8 @@ export default function AddTeach() {
         <DialogTitle id="form-dialog-title">Add Teacher</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Input teacher details then select "Submit"
+            Fill out the following fields to add a student to the school's
+            database.
           </DialogContentText>
           <TextField
             autoFocus

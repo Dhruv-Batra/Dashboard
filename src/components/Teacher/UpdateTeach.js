@@ -7,6 +7,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles({
   root: {
@@ -21,9 +23,13 @@ const useStyles = makeStyles({
   },
 });
 
-export default function AddStud() {
+export default function UpdateTeach({ teacherName, teacherId }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+  const [field, setField] = useState("name");
+  const [update, setUpdate] = useState();
+
+  console.log(teacherId);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,32 +39,23 @@ export default function AddStud() {
     setOpen(false);
   };
 
-  const [teacherId, setTeacherId] = useState(null);
-
   function handleClick() {
-    const studentData = {
-      teacherId: teacherId,
-      name: "Rumpelstilskin",
-      gradeLevel: 5,
-      birthday: "September 23, 2012",
-      address: "222 Sesame St.",
-      allergies: null,
-      classGrade: 98.4,
-      gradeHistory: [95.6, 94.3, 99.4, 98.7, 96.8],
-      emergencyContact: {
-        name: "Tom Green",
-        relationship: "father",
-        phoneNumber: "(804) 894-4389",
-      },
+    const teacherUpdatedData = {
+      teacherId: { teacherId },
+      field: { field },
+      update: { update },
     };
-    fetch("http://localhost:8080/student/add", {
+
+    fetch("http://localhost:8080/teacher/update", {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(studentData),
+      body: JSON.stringify(teacherUpdatedData),
     });
+
+    setOpen(false);
   }
 
   return (
@@ -69,35 +66,53 @@ export default function AddStud() {
         className={classes.root}
         onClick={handleClickOpen}
       >
-        Add Student
+        Update
       </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Add Student</DialogTitle>
+        <DialogTitle id="form-dialog-title">
+          Update Teacher Database
+        </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Fill out the following fields to add a student to the school's
-            database.
+            Fill out the following fields to update {teacherName}'s details.
           </DialogContentText>
-          <InputLabel htmlFor="age-native-simple">Age</InputLabel>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
-            fullWidth
-          />
+
+          <InputLabel>Field</InputLabel>
+          <Select
+            id="fieldSelector"
+            value={field}
+            onChange={(event) => setField(event.target.value)}
+            autoWidth
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="name">Name</MenuItem>
+            <MenuItem value="roomNumber">Room Number</MenuItem>
+            <MenuItem value="gradeLevel">Grade Level</MenuItem>
+            <MenuItem value="employeeStatus">Employee Status</MenuItem>
+          </Select>
         </DialogContent>
+
+        <TextField
+          autoFocus
+          margin="dense"
+          id="name"
+          label="Update"
+          fullWidth
+          onChange={(event) => setUpdate(event.target.value)}
+        />
+
         <DialogActions>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
           <Button onClick={handleClick} color="primary">
-            Submit
+            Update
           </Button>
         </DialogActions>
       </Dialog>
