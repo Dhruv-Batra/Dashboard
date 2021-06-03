@@ -63,8 +63,8 @@ export default function AddStud() {
       gradeLevel: gradeLevel,
       birthday: birthday,
       address: address,
-      allergies: null,
-      classGrade: 98.4,
+      allergies: allergies,
+      classGrade: classGrade,
       gradeHistory: [95.6, 94.3, 99.4, 98.7, 96.8],
       emergencyContact: {
         name: "Tom Green",
@@ -113,7 +113,6 @@ export default function AddStud() {
           />
           <TextField
             id="teacherId"
-            autoFocus
             margin="dense"
             label="Teacher ID"
             onChange={(e)=>setTeacherId(e.target.value)}
@@ -123,6 +122,7 @@ export default function AddStud() {
           <InputLabel>Grade Level</InputLabel>
           <Select
             id="gradeLevelSelector"
+            margin="dense"
             value={gradeLevel}
             onChange={(event) => setGradeLevel(event.target.value)}
             autoWidth
@@ -150,18 +150,44 @@ export default function AddStud() {
         </form>
         <TextField
             id="address"
-            autoFocus
             margin="dense"
             label="Address"
             onChange={(e)=>setAddress(e.target.value)}
             fullWidth
           />
         <TextField
-            id="address"
-            autoFocus
+            id="allergies"
             margin="dense"
-            label="Address"
-            onChange={(e)=>setAddress(e.target.value)}
+            label="Allergies"
+            onChange={(e)=>setAllergies(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="classGrade"
+            margin="dense"
+            label="Current Grade"
+            onChange={(e)=>setClassGrade(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="ename"
+            margin="dense"
+            label="Emergency Contact Name"
+            onChange={(e)=>setEName(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="erel"
+            margin="dense"
+            label="Emergency Contact Relationship"
+            onChange={(e)=>setERel(e.target.value)}
+            fullWidth
+        />
+        <TextField
+            id="ephone"
+            margin="dense"
+            label="Emergency Contact Phone"
+            onChange={(e)=>setEPhone(e.target.value)}
             fullWidth
         />
         </DialogContent>
