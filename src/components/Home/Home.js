@@ -21,59 +21,74 @@ export default function Home() {
     <div className="main-div">
       <div
         style={{
-          padding: "15px",
-          backgroundColor: "#003c6c",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          position: "fixed",
-          width: "100%",
+          height: "372px",
+
+          position: "static",
+          alignItems: "center",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+
+          backgroundImage: `url(https://cdn.discordapp.com/attachments/850080301313163264/850085733922242661/unknown.png)`,
         }}
       >
-        <Typography variant="h5" style={{ color: "#FDC700" }}>
-          Thomas Jefferson Elementary
-        </Typography>
-      </div>
-
-      {/*  */}
-      <div
-        className="calendar-container"
-        style={{ position: "absolute", right: "70%", top: "40%" }}
-      >
-        <h2>Today's Events</h2>
-      </div>
-      {/* button container */}
-      <div
-        className="button-container"
-        style={{ position: "absolute", left: "70%", top: "45%" }}
-      >
-        <div
-          className="button-styling"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Link to="/teacher" style={{ textDecoration: "none" }}>
-            <StyledButton variant="contained" color="white">
-              Teacher Directory
-            </StyledButton>
-          </Link>
-          <br />
-          <Link to="/student" style={{ textDecoration: "none" }}>
-            <StyledButton variant="contained" color="white">
-              Student Directory
-            </StyledButton>
-          </Link>
-          <br />
-          <Link to="/calendar" style={{ textDecoration: "none" }}>
-            <StyledButton variant="contained" color="white">
-              Calendar
-            </StyledButton>
-          </Link>
-          <br />
+        {" "}
+        <div style={{ position: "absolute", left: "44%", top: "20%" }}>
+          <h1>Thomas Jefferson Elementary Dashboard</h1>
         </div>
+        <div
+          className="calendar-container"
+          style={{ position: "absolute", right: "70%", top: "55%" }}
+        >
+          <h2>Today's Events</h2>
+        </div>
+        <div
+          className="button-container"
+          style={{ position: "absolute", left: "60%", top: "60%" }}
+        >
+          <div
+            className="button-styling"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Link to="/teacher" style={{ textDecoration: "none" }}>
+              <StyledButton variant="contained" color="primary">
+                Teacher Directory
+              </StyledButton>
+            </Link>
+            <br />
+            <Link to="/student" style={{ textDecoration: "none" }}>
+              <StyledButton variant="contained" color="primary">
+                Student Directory
+              </StyledButton>
+            </Link>
+            <br />
+            <Link to="/calendar" style={{ textDecoration: "none" }}>
+              <StyledButton variant="contained" color="primary">
+                Calendar
+              </StyledButton>
+            </Link>
+            <br />
+          </div>
+        </div>
+      </div>
+      <div
+        style={{
+          height: "615px",
+
+          position: "static",
+          alignItems: "center",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+
+          backgroundImage: `url(https://cdn.discordapp.com/attachments/850080301313163264/850087013520375848/unknown.png)`,
+        }}
+      >
+        {" "}
       </div>
     </div>
   );

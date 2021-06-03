@@ -48,7 +48,7 @@ function App() {
         </div>
       </BrowserRouter>
       <div style={{ position: "fixed", bottom: 0, width: "100%" }}>
-        <Footer></Footer>
+        <Footer style={{ backgroundColor: "#003c6c" }}></Footer>
       </div>
     </div>
   );
