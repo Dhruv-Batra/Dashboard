@@ -9,7 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import update from 'immutability-helper';
+import update from "immutability-helper";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     color: "#FDC700", // text color
     height: 60,
-    width: 400,
+    width: 346,
     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
     fontSize: "18px",
   },
   container: {
-    display: 'flex',
-    flexWrap: 'wrap',
+    display: "flex",
+    flexWrap: "wrap",
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -45,7 +45,7 @@ export default function AddStud() {
     setOpen(false);
   };
 
-  const [teacherId, setTeacherId] = useState('archives');
+  const [teacherId, setTeacherId] = useState("archives");
   const [name, setName] = useState("Not Specified");
   const [gradeLevel, setGradeLevel] = useState(0);
   const [birthday, setBirthday] = useState("Not Specified");
@@ -56,7 +56,6 @@ export default function AddStud() {
   const [ename, setEName] = useState("Not Specified");
   const [erel, setERel] = useState("Not Specified");
   const [ephone, setEPhone] = useState("Not Specified");
-
 
   function handleClick() {
     const studentData = {
@@ -83,7 +82,7 @@ export default function AddStud() {
       },
       body: JSON.stringify(studentData),
     });
-    setTeacherId('archives');
+    setTeacherId("archives");
     setName("Not Specified");
     setGradeLevel(0);
     setBirthday("Not Specified");
@@ -97,9 +96,9 @@ export default function AddStud() {
     setOpen(false);
   }
 
-  function handleGradeHistChange(e,i){
-    let temp=[...gradeHistory];
-    temp[i]=e;
+  function handleGradeHistChange(e, i) {
+    let temp = [...gradeHistory];
+    temp[i] = e;
     setGradeHistory(temp);
   }
 
@@ -129,17 +128,18 @@ export default function AddStud() {
             autoFocus
             margin="dense"
             label="Name"
-            onChange={(e)=>setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             fullWidth
           />
           <TextField
             id="teacherId"
             margin="dense"
             label="Teacher ID"
-            onChange={(e)=>setTeacherId(e.target.value)}
+            onChange={(e) => setTeacherId(e.target.value)}
             fullWidth
           />
-          <br></br><br></br>
+          <br></br>
+          <br></br>
           <InputLabel>Grade Level</InputLabel>
           <Select
             id="gradeLevelSelector"
@@ -155,81 +155,86 @@ export default function AddStud() {
             <MenuItem value={4}>4</MenuItem>
             <MenuItem value={5}>5</MenuItem>
             <MenuItem value={6}>6</MenuItem>
-        </Select>
+          </Select>
 
-        {[...Array(gradeLevel)].map((x, i) =>
+          {[...Array(gradeLevel)].map((x, i) => (
             <div>
-                <TextField
-                    id='gradeHistory'
-                    margin="dense"
-                    label={(i===0 ? 'Kindergarten Grade' : "Grade for grade "+i.toString())}
-                    onChange={(e)=>handleGradeHistChange(e.target.value,i)}
-                    fullWidth
-                />
-                <Button
-                    style={{background: "#003c6c",color: "#FDC700"}}
-                    color='contained'
-                    variant='oulined'
-                >
-                    Add
-                </Button>
+              <TextField
+                id="gradeHistory"
+                margin="dense"
+                label={
+                  i === 0
+                    ? "Kindergarten Grade"
+                    : "Grade for grade " + i.toString()
+                }
+                onChange={(e) => handleGradeHistChange(e.target.value, i)}
+                fullWidth
+              />
+              <Button
+                style={{ background: "#003c6c", color: "#FDC700" }}
+                color="contained"
+                variant="oulined"
+              >
+                Add
+              </Button>
             </div>
-        )}
-        <br></br><br></br>
-        <form className={classes.container} noValidate>
+          ))}
+          <br></br>
+          <br></br>
+          <form className={classes.container} noValidate>
             <TextField
-                id="birthday"
-                label="Birthday"
-                type="date"
-                className={classes.textField}
-                onChange={(e)=>setBirthday(e.target.value)}
-                InputLabelProps={{
+              id="birthday"
+              label="Birthday"
+              type="date"
+              className={classes.textField}
+              onChange={(e) => setBirthday(e.target.value)}
+              InputLabelProps={{
                 shrink: true,
-                }}
+              }}
             />
-        </form>
-        <TextField
+          </form>
+          <TextField
             id="address"
             margin="dense"
             label="Address"
-            onChange={(e)=>setAddress(e.target.value)}
+            onChange={(e) => setAddress(e.target.value)}
             fullWidth
           />
-        <TextField
+          <TextField
             id="allergies"
             margin="dense"
             label="Allergies"
-            onChange={(e)=>setAllergies(e.target.value)}
+            onChange={(e) => setAllergies(e.target.value)}
             fullWidth
-        />
-        <TextField
+          />
+          <TextField
             id="classGrade"
             margin="dense"
             label="Current Grade in Class"
-            onChange={(e)=>setClassGrade(e.target.value)}
+            onChange={(e) => setClassGrade(e.target.value)}
             fullWidth
-        />
-        <TextField
+          />
+          <TextField
             id="ename"
             margin="dense"
             label="Emergency Contact Name"
-            onChange={(e)=>setEName(e.target.value)}
+            onChange={(e) => setEName(e.target.value)}
             fullWidth
-        />
-        <TextField
+          />
+          <TextField
             id="erel"
             margin="dense"
             label="Emergency Contact Relationship"
-            onChange={(e)=>setERel(e.target.value)}
+            onChange={(e) => setERel(e.target.value)}
             fullWidth
-        />
-        <TextField
+          />
+          <TextField
             id="ephone"
             margin="dense"
             label="Emergency Contact Phone"
-            onChange={(e)=>setEPhone(e.target.value)}
+            onChange={(e) => setEPhone(e.target.value)}
             fullWidth
-        />
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="secondary">
