@@ -51,6 +51,7 @@ export default function AddStud() {
   const [address, setAddress] = useState("Not Specified");
   const [allergies, setAllergies] = useState("Not Specified");
   const [classGrade, setClassGrade] = useState("Not Specified");
+  const [gradeHistory, setGradeHistory] = useState([]);
   const [ename, setEName] = useState("Not Specified");
   const [erel, setERel] = useState("Not Specified");
   const [ephone, setEPhone] = useState("Not Specified");
@@ -65,14 +66,14 @@ export default function AddStud() {
       address: address,
       allergies: allergies,
       classGrade: classGrade,
-      gradeHistory: [95.6, 94.3, 99.4, 98.7, 96.8],
+      gradeHistory: gradeHistory,
       emergencyContact: {
         name: ename,
         relationship: erel,
         phoneNumber: ephone,
       },
     };
-    console.log(studentData);
+    console.log(gradeHistory);
     fetch("http://localhost:8080/student/add", {
       method: "POST",
       headers: {
@@ -128,15 +129,23 @@ export default function AddStud() {
             onChange={(event) => setGradeLevel(event.target.value)}
             autoWidth
           >
-            <MenuItem value={"K"}>K</MenuItem>
-            <MenuItem value={"1"}>1</MenuItem>
-            <MenuItem value={"2"}>2</MenuItem>
-            <MenuItem value={"3"}>3</MenuItem>
-            <MenuItem value={"4"}>4</MenuItem>
-            <MenuItem value={"5"}>5</MenuItem>
-            <MenuItem value={"6"}>6</MenuItem>
+            <MenuItem value={0}>K</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={6}>6</MenuItem>
         </Select>
-        <br></br><br></br>
+        {[...Array(gradeLevel)].map((x, i) =>
+            <TextField
+                id='gradeHistory'
+                margin="dense"
+                label={i.toString()}
+                onChange={(e)=>setGradeHistory([...gradeHistory, e.target.value])}
+                fullWidth
+            />
+        )}
         <form className={classes.container} noValidate>
             <TextField
                 id="birthday"
