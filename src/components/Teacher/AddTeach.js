@@ -79,7 +79,7 @@ export default function AddTeach() {
         <DialogTitle id="form-dialog-title">Add Teacher</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Fill out the following fields to add a student to the school's
+            Fill out the following fields to add a teacher to the school's
             database.
           </DialogContentText>
           <TextField
