@@ -16,6 +16,8 @@ import Abby from "./components/Abby";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+
+import Updater from "./components/Calendar/Updater"
 // nolan changed this
 function App() {
   return (
@@ -33,6 +35,7 @@ function App() {
       <BrowserRouter>
         {/* <Navbar /> */}
         <div>
+          <Updater>
           <Switch>
             <Route path="/" exact component={Home} />
             <div>
@@ -45,6 +48,7 @@ function App() {
               <Route path="/abby" component={Abby} />
             </div>
           </Switch>
+          </Updater>
         </div>
       </BrowserRouter>
       <div style={{ position: "fixed", bottom: 0, width: "100%" }}>

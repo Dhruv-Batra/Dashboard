@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import {
   Button,
   withStyles,
@@ -14,6 +14,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { RiEditBoxLine } from "react-icons/ri";
 import { RiDeleteBinLine } from "react-icons/ri";
 import AddEvent from "./AddEvent";
+import UpdateEvent from "./UpdateEvent";
+import { UpdaterContext } from "./Updater";
 
 export default function Calendar() {
   const useStyles = makeStyles((theme) => ({
@@ -38,7 +40,7 @@ export default function Calendar() {
   const [event, setEvent] = useState([]);
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
-  const [update, setUpdate] = useState("");
+  const { update, setUpdate } = useContext(UpdaterContext);
 
   // DATE SORT
 
@@ -142,7 +144,7 @@ export default function Calendar() {
     getEvents();
     console.log("update", update);
   }, [update]);
-  //function to add events - DONE
+  //function to add events - DONE (need to figure out how to get it to update)
 
 
 
@@ -160,7 +162,7 @@ export default function Calendar() {
       border: 0,
       color: "black", // text color
       height: 300,
-      padding: "0 30px",
+      padding: "0 30px 30px 0",
       boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
       display: "flex",
       flexDirection: "row",
@@ -181,7 +183,10 @@ export default function Calendar() {
     //   ))}
     // </div>
     <div classname="big-boi-div">
+      
+      <br /> <br /> <br /> <br />
       <AddEvent setUpdate={setUpdate} />
+      
       <div className="card-container">
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
