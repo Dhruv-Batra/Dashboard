@@ -44,16 +44,16 @@ export default function AddStud() {
     setOpen(false);
   };
 
-  const [teacherId, setTeacherId] = useState(null);
-  const [name, setName] = useState(null);
-  const [gradeLevel, setGradeLevel] = useState(null);
-  const [birthday, setBirthday] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [allergies, setAllergies] = useState(null);
-  const [classGrade, setClassGrade] = useState(null);
-  const [ename, setEName] = useState(null);
-  const [erel, setERel] = useState(null);
-  const [ephone, setEPhone] = useState(null);
+  const [teacherId, setTeacherId] = useState('archives');
+  const [name, setName] = useState("Not Specified");
+  const [gradeLevel, setGradeLevel] = useState("Not Specified");
+  const [birthday, setBirthday] = useState("Not Specified");
+  const [address, setAddress] = useState("Not Specified");
+  const [allergies, setAllergies] = useState("Not Specified");
+  const [classGrade, setClassGrade] = useState("Not Specified");
+  const [ename, setEName] = useState("Not Specified");
+  const [erel, setERel] = useState("Not Specified");
+  const [ephone, setEPhone] = useState("Not Specified");
 
 
   function handleClick() {
@@ -67,11 +67,12 @@ export default function AddStud() {
       classGrade: classGrade,
       gradeHistory: [95.6, 94.3, 99.4, 98.7, 96.8],
       emergencyContact: {
-        name: "Tom Green",
-        relationship: "father",
-        phoneNumber: "(804) 894-4389",
+        name: ename,
+        relationship: erel,
+        phoneNumber: ephone,
       },
     };
+    console.log(studentData);
     fetch("http://localhost:8080/student/add", {
       method: "POST",
       headers: {
