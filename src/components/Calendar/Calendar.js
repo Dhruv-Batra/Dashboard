@@ -37,6 +37,24 @@ export default function Calendar() {
   const [event, setEvent] = useState([]);
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
+
+  const compareDate = (a, b) => {
+    //console.log("name restaurants", props.restaurants);
+    let dateA = a.date,
+      dateB = b.date;
+    if (dateA < dateB) {
+      return -1;
+    }
+    if (dateA > dateB) {
+      return 1;
+    }
+    return 0;
+  }
+
+  function sortDate (events) {
+    let newArray = events.sort(compareDate);
+    setEvent([...newArray]);
+  }
   // function to get events
   // GET all events
 
@@ -51,7 +69,10 @@ export default function Calendar() {
           if (obj.length === 0) {
             obj = [{ volumeInfo: { title: "Book not found.", authors: [""] } }];
           }
-          setEvent(obj);
+          // setEvent(obj);
+          // console.log("before sort", event);
+          sortDate(obj);
+          console.log("after sort", event);
         } else {
           console.log("Oops.");
         }
