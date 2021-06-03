@@ -35,4 +35,20 @@ router.post("/add", async (req, res) => {
   res.sendStatus(200);
 });
 
+router.post("/update", async (req, res) => {
+  const { eventId, field, update } = req.body;
+  console.log(req.body);
+
+  const fieldChange = {};
+
+  fieldChange[field] = update;
+
+  const resp = await db
+    .collection("classes")
+    .doc(eventId)
+    .update(fieldChange);
+  res.sendStatus(200);
+});
+
+
 module.exports = router;

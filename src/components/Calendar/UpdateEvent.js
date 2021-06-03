@@ -1,4 +1,4 @@
-import React,{ useState, useContext } from "react";
+import { useState } from "react";
 import { Button, makeStyles, Grid } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
@@ -9,7 +9,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
-import { UpdaterContext } from "./Updater";
 
 const useStyles = makeStyles({
     root: {
@@ -24,7 +23,7 @@ const useStyles = makeStyles({
     },
 });
 
-export default function AddEvent() {
+export default function AddEvent(props) {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     //date, description, meridiem, time, title
@@ -33,7 +32,6 @@ export default function AddEvent() {
     const [time, setTime] = useState(1);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const {update, setUpdate} = useContext(UpdaterContext);
 
 
     const handleClickOpen = () => {
@@ -52,6 +50,7 @@ export default function AddEvent() {
             title,
             description,
         };
+        props.setUpdate(Math.random());
         console.log("eventDate", eventData);
 
         fetch("http://localhost:8080/events/add", {
@@ -62,21 +61,20 @@ export default function AddEvent() {
             },
             body: JSON.stringify(eventData),
         });
-        setUpdate(Math.random());
-        console.log(update);
+
         setOpen(false);
     }
 
     return (
         <div>
-            <Button
+            {/* <Button
                 variant="outlined"
                 color="primary"
                 className={classes.root}
                 onClick={handleClickOpen}
             >
-                Add Event
-      </Button>
+                Edit Event
+      </Button> */}
             <Dialog
                 open={open}
                 onClose={handleClose}
@@ -85,7 +83,7 @@ export default function AddEvent() {
                 <DialogTitle id="form-dialog-title">Add Event</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        Fill out the following fields to add a new school event.
+                        Fill out the following fields to edit this event.
           </DialogContentText>
                     <TextField
                         autoFocus
@@ -120,9 +118,7 @@ export default function AddEvent() {
                         onChange={(event) => setTime(event.target.value)}
                         autoWidth
                     >
-                        {/* <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem> */}
+
                         <MenuItem value="1">1</MenuItem>
                         <MenuItem value="2">2</MenuItem>
                         <MenuItem value="3">3</MenuItem>
@@ -144,21 +140,10 @@ export default function AddEvent() {
                         onChange={(event) => setMeridiem(event.target.value)}
                         autoWidth
                     >
-                        {/* <MenuItem value={""}>
-                            <em>None</em>
-                        </MenuItem> */}
                         <MenuItem value={"am"}>am</MenuItem>
                         <MenuItem value={"pm"}>pm</MenuItem>
                     </Select>
 
-                    {/* <TextField
-                        autoFocus
-                        margin="dense"
-                        id="room number"
-                        label="Room Number"
-                        fullWidth
-                        onChange={(event) => setRoomNumber(event.target.value)}
-                    /> */}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">
