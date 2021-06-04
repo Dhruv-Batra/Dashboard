@@ -56,6 +56,7 @@ export default function DisplayTeacher({ teacher }) {
   if (teacher.length > 0) {
     return (
       <div>
+        <h1>Teacher Directory</h1>
         <SearchBar
           //value={searched}
           placeholder="Search Teacher"
@@ -112,6 +113,10 @@ export default function DisplayTeacher({ teacher }) {
                       className={classes.root}
                       teacherId={teacher1.id}
                     />
+                    <UpdateTeach />
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button className={classes.root}>View Roster</Button>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
@@ -124,6 +129,7 @@ export default function DisplayTeacher({ teacher }) {
     return (
       <div>
         <p>hi</p>
+        <p>Could not load teachers.</p>
       </div>
     );
   }

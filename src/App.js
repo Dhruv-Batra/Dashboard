@@ -19,12 +19,15 @@ import Footer from "./components/Footer";
 
 import Updater from "./components/Calendar/Updater";
 import TeachIdProvider from "./components/Teacher/TeachIdContext";
+
 // nolan changed this
 function App() {
   return (
     <div
       className="App"
       style={{
+        fontFamily:
+          "Trebuchet MS, Lucida Sans Unicode , Lucida Grande,Lucida Sans, Arial, sans-serif",
         height: "1000px",
         alignItems: "center",
         backgroundColor: "lightgray",
@@ -52,6 +55,8 @@ function App() {
               </Switch>
             </Updater>
           </TeachIdProvider>
+          
+
         </div>
       </BrowserRouter>
       <div style={{ position: "fixed", bottom: 0, width: "100%" }}>

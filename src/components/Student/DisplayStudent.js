@@ -60,6 +60,7 @@ export default function DisplayStudent(props) {
   if (props.student != null) {
     return (
       <div>
+        <h1>Student Directory</h1>
         <SearchBar
           //value={searched}
           placeholder="Search Student"
@@ -129,6 +130,9 @@ export default function DisplayStudent(props) {
                       studentId={student.id}
                       teacherId={student.teacherId}
                     />
+
+                    <UpdateStud />
+                        
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

@@ -1,5 +1,6 @@
 import { Button, withStyles, Typography, Card } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 export default function Home() {
   const StyledButton = withStyles({
     root: {
@@ -33,8 +34,35 @@ export default function Home() {
         }}
       >
         {" "}
-        <div style={{ position: "absolute", left: "44%", top: "20%" }}>
-          <h1>Thomas Jefferson Elementary Dashboard</h1>
+        <div>
+          <h1 style={{ position: "absolute", left: "50%", top: "20%" }}>
+            Thomas Jefferson Elementary
+          </h1>
+          <p
+            style={{
+              position: "absolute",
+              left: "30%",
+              top: "30%",
+              textAlign: "center",
+            }}
+          >
+            A diverse community of global citizens and lifelong learners who
+            lead by example. We believe in the power of positivity, respect, and
+            cooperation. We manifest our potential through confidence and work
+            ethic.
+          </p>
+          <br />
+          <p
+            style={{
+              position: "absolute",
+              left: "43%",
+              top: "40%",
+              textAlign: "center",
+            }}
+          >
+            Principal: Camille Cooper | Phone: 434-293-4402 ext. 100 | Email:
+            camillecooper@tjes.edu
+          </p>{" "}
         </div>
         <div
           className="calendar-container"

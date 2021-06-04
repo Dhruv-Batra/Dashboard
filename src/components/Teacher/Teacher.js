@@ -47,18 +47,18 @@ export default function Teacher() {
           backgroundColor: "lightgray",
         }}
       >
-        <h1>Student Directory</h1>
+        <h1>Teacher Directory</h1>
       </div>
       <div
         className="add-button-container"
-        style={{ position: "absolute", left: "75%", top: "30%" }}
+        style={{ position: "absolute", left: "75%", top: "40%" }}
       >
         <AddTeach />
       </div>
 
       <div
         className="search-button-container"
-        style={{ position: "absolute", left: "25%", top: "26%" }}
+        style={{ position: "absolute", left: "25%", top: "40%" }}
       >
         {/* <SearchBar
           placeholder="Search Student"

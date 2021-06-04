@@ -54,7 +54,7 @@ export default function Student() {
       </div>
       <div
         className="add-button-container"
-        style={{ position: "absolute", left: "75%", top: "30%" }}
+        style={{ position: "absolute", left: "75%", top: "40%" }}
       >
         <AddStud />
       </div>
