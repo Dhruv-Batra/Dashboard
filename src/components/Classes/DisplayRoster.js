@@ -85,6 +85,7 @@ export default function DisplayRoster(props) {
                 <StyledTableCell align="right">
                   Emergency Contact
                 </StyledTableCell>
+                <StyledTableCell align="right">Current Grade</StyledTableCell>
                 <StyledTableCell align="right">Update Student</StyledTableCell>
               </StyledTableRow>
             </TableHead>
@@ -138,6 +139,9 @@ export default function DisplayRoster(props) {
                       ? student.emergencyContact.relationship
                       : "None"}
                     </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">{student.classGrade ? student.classGrade : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                       <UpdateStud/>
