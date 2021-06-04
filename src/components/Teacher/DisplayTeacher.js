@@ -80,7 +80,7 @@ export default function DisplayTeacher({ teacher }) {
                 <StyledTableCell align="right">
                   Update Information
                 </StyledTableCell>
-                <StyledTableCell align="right">View Roster</StyledTableCell>
+                <StyledTableCell align="right"></StyledTableCell>
               </StyledTableRow>
             </TableHead>
             <TableBody>
@@ -114,9 +114,6 @@ export default function DisplayTeacher({ teacher }) {
                       teacherId={teacher1.id}
                     />
                     <UpdateTeach />
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    <Button className={classes.root}>View Roster</Button>
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
