@@ -1,7 +1,6 @@
 import AddTeach from "./AddTeach";
 import UpdateTeach from "./UpdateTeach";
 import ClassRedirect from "./ClassRedirect";
-import TeachIdProvider, { TeachIdContext } from "./TeachIdContext";
 import { useState, useEffect } from "react";
 import DisplayTeacher from "./DisplayTeacher";
 

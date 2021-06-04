@@ -13,8 +13,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayStudent from "./DisplayStudent";
 import AddStud from "./AddStud";
+
 export default function Student() {
   const [student, setStudent] = useState([]);
+
+  console.log(student);
 
   const call = () => {
     fetch("http://localhost:8080/student/get")

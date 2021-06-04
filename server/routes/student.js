@@ -21,7 +21,7 @@ async function recurTeach(teachIds, index, studentList, res) {
     .collection("students")
     .get();
   teachSnapshot.forEach((student) => {
-    studentList.push(student.data());
+    studentList.push({ ...student.data(), id: student.id });
   });
   recurTeach(teachIds, index + 1, studentList, res);
 }

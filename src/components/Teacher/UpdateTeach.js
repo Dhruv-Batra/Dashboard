@@ -32,8 +32,6 @@ export default function UpdateTeach({ teacherId }) {
   const [field, setField] = useState("name");
   const [update, setUpdate] = useState(null);
 
-  //console.log(teacherId);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -57,25 +55,18 @@ export default function UpdateTeach({ teacherId }) {
       },
       body: JSON.stringify(teacherUpdatedData),
     });
-    setField("name");
-    setUpdate(null);
+
     setOpen(false);
   }
 
-  const [fieldName,setFieldName] = useState('Name');
+  const [fieldName, setFieldName] = useState("name");
 
-  useEffect(() =>{
-    if(field==='name')
-      setFieldName('Name')
-    if(field==='roomNumber')
-      setFieldName('Room Number')
-    if(field==='gradeLevel')
-      setFieldName('Grade Level')
-    if(field==='employeeStatus')
-      setFieldName('Employee Status')
-  },[field])
-
-
+  useEffect(() => {
+    if (field === "name") setFieldName("Name");
+    if (field === "roomNumber") setFieldName("Room Number");
+    if (field === "gradeLevel") setFieldName("Grade Level");
+    if (field === "employeeStatus") setFieldName("Employee Status");
+  }, [field]);
 
   return (
     <div>
@@ -118,17 +109,17 @@ export default function UpdateTeach({ teacherId }) {
           autoFocus
           className={classes.textField}
           margin="dense"
-          id='updater'
+          id="updater"
           label={fieldName}
           fullWidth
           onChange={(event) => setUpdate(event.target.value)}
         />
 
         <DialogActions>
-          <Button onClick={handleClose} color="secondary">
+          <Button onClick={() => handleClose()} color="secondary">
             Cancel
           </Button>
-          <Button onClick={handleClick} color="primary">
+          <Button onClick={() => handleClick()} color="primary">
             Update
           </Button>
         </DialogActions>

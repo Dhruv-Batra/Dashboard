@@ -11,6 +11,7 @@ import Paper from "@material-ui/core/Paper";
 import SearchBar from "material-ui-search-bar";
 import Button from "@material-ui/core/Button";
 import UpdateTeach from "./UpdateTeach";
+import ClassRedirect from "./ClassRedirect";
 
 const useStyles = makeStyles({
   table: {
@@ -105,6 +106,13 @@ export default function DisplayTeacher({ teacher }) {
                     <Typography variant="h6">{teacher1.gradeLevel}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
+                    <UpdateTeach teacherId={teacher1.id} />
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <ClassRedirect
+                      className={classes.root}
+                      teacherId={teacher1.id}
+                    />
                     <UpdateTeach />
                   </StyledTableCell>
                   <StyledTableCell align="right">
@@ -120,6 +128,7 @@ export default function DisplayTeacher({ teacher }) {
   } else {
     return (
       <div>
+        <p>hi</p>
         <p>Could not load teachers.</p>
       </div>
     );

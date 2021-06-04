@@ -126,7 +126,13 @@ export default function DisplayStudent(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
+                    <UpdateStud
+                      studentId={student.id}
+                      teacherId={student.teacherId}
+                    />
+
                     <UpdateStud />
+                        
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

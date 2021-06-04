@@ -1,16 +1,20 @@
 //import TeachIdProvider from "./TeachIdContext";
 import { useState, useEffect } from "react";
-import { TeachIdContext } from "../Teacher/TeachIdContext.js";
+import { TeachIdContext } from "../Teacher/TeachIdContext";
 import { useContext } from "react";
-import DisplayRoster from './DisplayRoster'
+import DisplayRoster from "./DisplayRoster";
 
 export default function Teacher() {
+  const [students, setStudents] = useState([]);
+  const { id, setId } = useContext(TeachIdContext);
 
-  const[students, setStudents] = useState([]);
-  //const { id, setId } = useContext(TeachIdContext);
-  
+  console.log(id);
+
+  const url = new URL("http://localhost:8080/teacher/roster");
+  url.searchParams.append("teachId", id);
+
   const call = () => {
-    fetch("http://localhost:8080/student/get")
+    fetch(url)
       .then((res) => {
         return res.json();
       })
@@ -31,9 +35,9 @@ export default function Teacher() {
     call();
   }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(students);
-  },[students])
+  }, [students]);
 
   return (
     <div>
@@ -75,7 +79,11 @@ export default function Teacher() {
           marginLeft: "20px",
         }}
       >
-        {students!=[]&&students.length>0  ? (<DisplayRoster student={students}/>) : <div></div>}
+        {students != [] && students.length > 0 ? (
+          <DisplayRoster student={students} />
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );
