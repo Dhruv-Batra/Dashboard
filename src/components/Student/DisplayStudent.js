@@ -130,8 +130,6 @@ export default function DisplayStudent(props) {
                       studentId={student.id}
                       teacherId={student.teacherId}
                     />
-
-                    <UpdateStud />
                         
                   </StyledTableCell>
                 </StyledTableRow>
