@@ -1,11 +1,13 @@
 import AddTeach from "./AddTeach";
 import UpdateTeach from "./UpdateTeach";
 import ClassRedirect from "./ClassRedirect";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import DisplayTeacher from "./DisplayTeacher";
+import { UpdaterContext } from "../Calendar/Updater";
 
 export default function Teacher() {
   const [teacher, setTeacher] = useState([]);
+  const { update, setUpdate } = useContext(UpdaterContext);
 
   useEffect(() => {
     fetch("http://localhost:8080/teacher/get")
@@ -32,7 +34,7 @@ export default function Teacher() {
           console.log("Error");
         }
       });
-  }, []);
+  }, [update]);
 
   useEffect(() => {
     console.log(teacher);
