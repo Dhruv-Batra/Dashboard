@@ -80,7 +80,7 @@ export default function DisplayRoster(props) {
               <StyledTableRow>
                 <StyledTableCell>Student Name</StyledTableCell>
                 <StyledTableCell align="right">Grade Level</StyledTableCell>
-                <StyledTableCell align="right">Teacher ID</StyledTableCell>
+                <StyledTableCell align="right">Teacher Name</StyledTableCell>
                 <StyledTableCell align="right">Address</StyledTableCell>
                 <StyledTableCell align="right">Allergies</StyledTableCell>
                 <StyledTableCell align="right">Birthday</StyledTableCell>
@@ -107,8 +107,8 @@ export default function DisplayRoster(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.teacherId
-                        ? student.teacherId
+                    <Typography variant="h6">{student.name
+                        ? student.name
                         : "None"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
