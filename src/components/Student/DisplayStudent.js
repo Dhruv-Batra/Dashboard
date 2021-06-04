@@ -93,7 +93,7 @@ export default function DisplayStudent(props) {
               {props.student.map((student, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell align="left" width="20%">
-                    <Typography variant="h6">{student.name}</Typography>
+                    <Typography variant="h6">{student.name ? student.name : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
@@ -103,10 +103,10 @@ export default function DisplayStudent(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.teacherId}</Typography>
+                    <Typography variant="h6">{student.teacherId ? student.teacherId : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.address}</Typography>
+                    <Typography variant="h6">{student.address ? student.address : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
@@ -114,15 +114,15 @@ export default function DisplayStudent(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.birthday}</Typography>
+                    <Typography variant="h6">{student.birthday ? student.birthday : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
-                      {student.emergencyContact.name}
+                      {student.emergencyContact.name ? student.emergencyContact.name : "none"}
                       <br />
-                      {student.emergencyContact.phoneNumber}
+                      {student.emergencyContact.phoneNumber ? student.emergencyContact.phoneNumber : "none"}
                       <br />
-                      {student.emergencyContact.relationship}
+                      {student.emergencyContact.relationship ? student.emergencyContact.relationship : "none"}
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
