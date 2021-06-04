@@ -83,7 +83,7 @@ export default function UpdateStud({ studentId, teacherId }) {
         Update
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Update Teacher Information</DialogTitle>
+        <DialogTitle>Update Student Information</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Fill out the following fields to update student details.
@@ -97,7 +97,7 @@ export default function UpdateStud({ studentId, teacherId }) {
             autoWidth
           >
             <MenuItem value={"classGrade"}>Current Class Grade</MenuItem>
-            <MenuItem value={"teacherId"}>Teacher</MenuItem>
+            {/* <MenuItem value={"teacherId"}>Teacher</MenuItem> */}
             <MenuItem value={"name"}>Name</MenuItem>
             <MenuItem value={"gradeLevel"}>Grade Level</MenuItem>
             <MenuItem value={"gradeHistory"}>Grade History</MenuItem>
@@ -281,6 +281,29 @@ export default function UpdateStud({ studentId, teacherId }) {
           )}
         </DialogContent>
         <DialogActions>
+        <Button
+            onClick={() =>
+              fetch("http://localhost:8080/student/delete", {
+                method: "DELETE",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ currentTeacherId: teacherId, studentId:studentId }),
+              })
+                // .then((res) => {
+                //     return res.json();
+                // })
+                .then((obj) => {
+                  console.log("deleting", obj);
+                  setOpen(false);
+                })
+                
+            }
+            color="default"
+          >
+            Delete Student
+          </Button>
           <Button onClick={handleClose} color="secondary">
             Cancel
           </Button>

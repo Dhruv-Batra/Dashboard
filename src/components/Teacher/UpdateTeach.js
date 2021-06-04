@@ -134,7 +134,7 @@ export default function UpdateTeach({ teacherId }) {
                   setUpdate(Math.random());
                 })
             }
-            color="secondary"
+            color="default"
           >
             Delete Teacher
           </Button>
