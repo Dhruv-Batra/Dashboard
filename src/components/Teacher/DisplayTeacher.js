@@ -77,9 +77,7 @@ export default function DisplayTeacher({ teacher }) {
                 <StyledTableCell align="right">Grade Level</StyledTableCell>
                 <StyledTableCell align="right">Status</StyledTableCell>
                 <StyledTableCell align="right">Room Number</StyledTableCell>
-                <StyledTableCell align="right">
-                  Update Information
-                </StyledTableCell>
+                <StyledTableCell align="right"></StyledTableCell>
                 <StyledTableCell align="right"></StyledTableCell>
               </StyledTableRow>
             </TableHead>
