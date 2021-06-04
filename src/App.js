@@ -22,6 +22,9 @@ import TeachIdProvider from "./components/Teacher/TeachIdContext";
 
 // nolan changed this
 function App() {
+
+  document.title='TJ ES Dashboard'
+
   return (
     <div
       className="App"
