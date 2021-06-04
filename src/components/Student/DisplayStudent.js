@@ -86,6 +86,7 @@ export default function DisplayStudent(props) {
                 <StyledTableCell align="right">
                   Emergency Contact
                 </StyledTableCell>
+                <StyledTableCell align="right">Current Grade</StyledTableCell>
                 <StyledTableCell align="right">Update Student</StyledTableCell>
               </StyledTableRow>
             </TableHead>
@@ -124,6 +125,9 @@ export default function DisplayStudent(props) {
                       <br />
                       {student.emergencyContact.relationship ? student.emergencyContact.relationship : "none"}
                     </Typography>
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Typography variant="h6">{student.classGrade ? student.classGrade : "none"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <UpdateStud
