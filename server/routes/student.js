@@ -115,4 +115,15 @@ router.post("/move", async (req, res) => {
   await delTargetStudent.delete();
 });
 
+router.delete("/delete", async (req, res) => {
+  console.log(req.body)
+  const delTargetStudent = db
+    .collection("classes")
+    .doc(req.body.currentTeacherId)
+    .collection("students")
+    .doc(req.body.studentId);
+  await delTargetStudent.delete();
+  res.sendStatus(200);
+});
+
 module.exports = router;
