@@ -18,8 +18,6 @@ export default function Navbar() {
     setAnchorEl(event.currentTarget);
   };
 
-  // const classes = useStyles();
-
   return (
     <div>
       <AppBar position="fixed">

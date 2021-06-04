@@ -101,7 +101,7 @@ export default function DisplayTeacher({ teacher }) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{teacher1.gradeLevel}</Typography>
+                    <Typography variant="h6">{teacher1.roomNumber}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <UpdateTeach teacherId={teacher1.id} />

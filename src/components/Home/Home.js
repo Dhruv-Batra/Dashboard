@@ -1,7 +1,28 @@
 import { Button, withStyles, Typography, Card } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import CardContent from "@material-ui/core/CardContent";
 
+const useStyles = makeStyles({
+  root: {
+    height: 250,
+    width: 225,
+    backgroundColor: "#FDC700",
+
+    textAlign: "center",
+    paddingTop: 20,
+    lineHeight: 1,
+    boxShadow: "10px 5px 5px black",
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: "heavy",
+  },
+});
 export default function Home() {
+  const classes = useStyles();
+
   const StyledButton = withStyles({
     root: {
       background: "#003c6c", // gradient color l -> r
@@ -66,9 +87,29 @@ export default function Home() {
         </div>
         <div
           className="calendar-container"
-          style={{ position: "absolute", right: "70%", top: "55%" }}
+          style={{ position: "absolute", right: "70%", top: "50%" }}
         >
           <h2>Today's Events</h2>
+          <Card className={classes.root}>
+            <CardContent>
+              <Typography
+                className={classes.title}
+                color="textSecondary"
+                gutterBottom
+              >
+                7 pm
+              </Typography>
+              <Typography variant="h5" component="h2">
+                Daddy Daughter Dance
+              </Typography>
+              <br />
+              <br />
+              <Typography variant="body2" component="p">
+                Rock n' Roll Themed
+                <br />
+              </Typography>
+            </CardContent>
+          </Card>
         </div>
         <div
           className="button-container"
