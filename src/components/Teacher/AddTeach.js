@@ -90,7 +90,8 @@ export default function AddTeach() {
             fullWidth
             onChange={(event) => setName(event.target.value)}
           />
-          <br></br><br></br>
+          <br></br>
+          <br></br>
           <InputLabel>Employee Status</InputLabel>
           <Select
             id="employeeStatusSelector"
@@ -101,7 +102,8 @@ export default function AddTeach() {
             <MenuItem value="full time">Full Time</MenuItem>
             <MenuItem value="part time">Part Time</MenuItem>
           </Select>
-          <br></br><br></br>
+          <br></br>
+          <br></br>
           <InputLabel>Grade Level</InputLabel>
           <Select
             id="gradeLevelSelector"
