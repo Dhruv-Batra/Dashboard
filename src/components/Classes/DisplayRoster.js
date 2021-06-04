@@ -92,24 +92,32 @@ export default function DisplayRoster(props) {
               {props.student.map((student, index) => (
                 <StyledTableRow key={index}>
                   <StyledTableCell align="left" width="20%">
-                    <Typography variant="h6">{student.name}</Typography>
+                    <Typography variant="h6">{student.name
+                        ? student.name
+                        : "None"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
                       {student.gradeLevel
                         ? student.gradeLevel
-                        : student.grade_level}
+                        : "None"}
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.teacherId}</Typography>
+                    <Typography variant="h6">{student.teacherId
+                        ? student.teacherId
+                        : "None"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                    <Typography variant="h6">{student.address}</Typography>
+                    <Typography variant="h6">{student.address
+                        ? student.address
+                        : "None"}</Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
-                      {student.allergies ? student.allergies : "none"}
+                      {student.allergies
+                        ? student.allergies
+                        : "None"}
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
@@ -117,11 +125,18 @@ export default function DisplayRoster(props) {
                   </StyledTableCell>
                   <StyledTableCell align="right">
                     <Typography variant="h6">
-                      {student.emergencyContact.name}
+                      {student.emergencyContact && student.emergencyContact.name
+                      ? student.emergencyContact.name
+                      : "None"}
                       <br />
-                      {student.emergencyContact.phoneNumber}
+                      {student.emergencyContact && student.emergencyContact.phoneNumber
+                      ? student.emergencyContact.phoneNumber
+                      : "None"
+                      }
                       <br />
-                      {student.emergencyContact.relationship}
+                      {student.emergencyContact && student.emergencyContact.relationship
+                      ? student.emergencyContact.relationship
+                      : "None"}
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
