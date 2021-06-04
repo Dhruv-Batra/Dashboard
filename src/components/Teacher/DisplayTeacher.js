@@ -113,7 +113,6 @@ export default function DisplayTeacher({ teacher }) {
                       className={classes.root}
                       teacherId={teacher1.id}
                     />
-                    <UpdateTeach />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}
