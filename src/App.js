@@ -11,19 +11,14 @@ import Home from "./components/Home/Home";
 import Student from "./components/Student/Student";
 import Teacher from "./components/Teacher/Teacher";
 
-import Dhruv from "./components/Dhruv";
-import Abby from "./components/Abby";
-
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Navigation/Navbar";
+import Footer from "./components/Navigation/Footer";
 
 import Updater from "./components/Calendar/Updater";
 import TeachIdProvider from "./components/Teacher/TeachIdContext";
 
-// nolan changed this
 function App() {
-
-  document.title='TJ ES Dashboard'
+  document.title = "TJ ES Dashboard";
 
   return (
     <div
@@ -52,14 +47,10 @@ function App() {
                   <Route path="/student" component={Student} />
                   <Route path="/classes" component={Classes} />
                   <Route path="/calendar" component={Calendar} />
-                  <Route path="/dhruv" component={Dhruv} />
-                  <Route path="/abby" component={Abby} />
                 </div>
               </Switch>
             </Updater>
           </TeachIdProvider>
-          
-
         </div>
       </BrowserRouter>
       <div style={{ position: "fixed", bottom: 0, width: "100%" }}>

@@ -6,7 +6,6 @@ var logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
-var indexRouter = require("./routes/index");
 const teacherRouter = require("./routes/teacher");
 const studentRouter = require("./routes/student");
 const eventsRouter = require("./routes/events");
