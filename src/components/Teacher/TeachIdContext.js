@@ -3,10 +3,12 @@ import React, { useState, createContext } from "react";
 const TeachIdContext = createContext();
 
 function TeachIdProvider({ children }) {
-  const [id, SetId] = useState();
+  const [id, setId] = useState("");
 
   return (
-    <TeachIdContext.Provider value={{ id }}>{children}</TeachIdContext.Provider>
+    <TeachIdContext.Provider value={{ id, setId }}>
+      {children}
+    </TeachIdContext.Provider>
   );
 }
 

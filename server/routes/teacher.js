@@ -7,7 +7,7 @@ router.get("/get", async (req, res) => {
   const classes = [];
   snapshot.forEach((doc) => {
     console.log(doc.data());
-    classes.push(doc.data());
+    classes.push({ ...doc.data(), id: doc.id });
   });
 
   res.send(classes);
@@ -45,14 +45,15 @@ router.post("/update", async (req, res) => {
 });
 
 router.get("/roster", async (req, res) => {
+  console.log(req.query);
   let teachSnapshot = await db
     .collection("classes")
     .doc(req.query.teachId)
     .collection("students")
     .get();
-  var studentList = {};
+  var studentList = [];
   teachSnapshot.forEach((student) => {
-    studentList[student.id] = student.data();
+    studentList.push({ ...student.data(), id: student.id });
   });
   res.send(studentList);
 });

@@ -17,7 +17,8 @@ import Abby from "./components/Abby";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import Updater from "./components/Calendar/Updater"
+import Updater from "./components/Calendar/Updater";
+import TeachIdProvider from "./components/Teacher/TeachIdContext";
 // nolan changed this
 function App() {
   return (
@@ -35,20 +36,22 @@ function App() {
       <BrowserRouter>
         {/* <Navbar /> */}
         <div>
-          <Updater>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <div>
-              <Navbar />
-              <Route path="/teacher" component={Teacher} />
-              <Route path="/student" component={Student} />
-              <Route path="/classes" component={Classes} />
-              <Route path="/calendar" component={Calendar} />
-              <Route path="/dhruv" component={Dhruv} />
-              <Route path="/abby" component={Abby} />
-            </div>
-          </Switch>
-          </Updater>
+          <TeachIdProvider>
+            <Updater>
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <div>
+                  <Navbar />
+                  <Route path="/teacher" component={Teacher} />
+                  <Route path="/student" component={Student} />
+                  <Route path="/classes" component={Classes} />
+                  <Route path="/calendar" component={Calendar} />
+                  <Route path="/dhruv" component={Dhruv} />
+                  <Route path="/abby" component={Abby} />
+                </div>
+              </Switch>
+            </Updater>
+          </TeachIdProvider>
         </div>
       </BrowserRouter>
       <div style={{ position: "fixed", bottom: 0, width: "100%" }}>

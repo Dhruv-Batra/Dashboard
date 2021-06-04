@@ -1,37 +1,42 @@
 import AddTeach from "./AddTeach";
 import UpdateTeach from "./UpdateTeach";
 import ClassRedirect from "./ClassRedirect";
-import TeachIdProvider, { TeachIdContext } from "./TeachIdContext";
 import { useState, useEffect } from "react";
-import DisplayTeacher from './DisplayTeacher'
+import DisplayTeacher from "./DisplayTeacher";
 
 export default function Teacher() {
+  const [teacher, setTeacher] = useState([]);
 
-  const[teacher, setTeacher] = useState([]);
-  
-  useEffect(()=>{
+  useEffect(() => {
     fetch("http://localhost:8080/teacher/get")
-    .then((res) => {
-      return res.json();
-    })
-    .then((obj) => {
-      if (obj != null) {
-        console.log("API CALL", obj);
-        if (obj.length === 0) {
-          obj = [{roomNumber: "304", employeeStatus: "Part Time", name: "Deborah Pots", gradeLevel: "3"}];
+      .then((res) => {
+        return res.json();
+      })
+      .then((obj) => {
+        if (obj != null) {
+          console.log("API CALL", obj);
+          if (obj.length === 0) {
+            obj = [
+              {
+                roomNumber: "304",
+                employeeStatus: "Part Time",
+                name: "Deborah Pots",
+                gradeLevel: "3",
+              },
+            ];
+          }
+          console.log("obj below");
+          console.log(obj);
+          setTeacher(obj);
+        } else {
+          console.log("Error");
         }
-        console.log('obj below')
-        console.log(obj)
-        setTeacher(obj);
-      } else {
-        console.log("Error");
-      }
-    });
-  },[])
+      });
+  }, []);
 
-  useEffect(()=>{
+  useEffect(() => {
     console.log(teacher);
-  },[teacher])
+  }, [teacher]);
 
   return (
     <div>
@@ -48,7 +53,7 @@ export default function Teacher() {
         className="add-button-container"
         style={{ position: "absolute", left: "75%", top: "30%" }}
       >
-        <AddTeach/>
+        <AddTeach />
       </div>
 
       <div
@@ -79,7 +84,11 @@ export default function Teacher() {
           marginLeft: "20px",
         }}
       >
-        {teacher!=[]&&teacher.length>0  ? (<DisplayTeacher teacher={teacher}/>) : <div></div>}
+        {teacher != [] && teacher.length > 0 ? (
+          <DisplayTeacher teacher={teacher} />
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

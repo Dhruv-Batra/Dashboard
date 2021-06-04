@@ -8,13 +8,16 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import SearchBar from "material-ui-search-bar";
-import UpdateStud from './UpdateStud'
+import UpdateStud from "./UpdateStud";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayStudent from "./DisplayStudent";
-import AddStud from './AddStud'
+import AddStud from "./AddStud";
+
 export default function Student() {
   const [student, setStudent] = useState([]);
+
+  console.log(student);
 
   const call = () => {
     fetch("http://localhost:8080/student/get")
@@ -38,8 +41,6 @@ export default function Student() {
     call();
   }, []);
 
-
-
   return (
     <div>
       <div
@@ -55,7 +56,7 @@ export default function Student() {
         className="add-button-container"
         style={{ position: "absolute", left: "75%", top: "30%" }}
       >
-        <AddStud/>
+        <AddStud />
       </div>
 
       <div
