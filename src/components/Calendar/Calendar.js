@@ -23,15 +23,16 @@ export default function Calendar() {
       flexGrow: 1,
     },
     paper: {
-      height: 300,
+      height: 275,
       width: 250,
       backgroundColor: "#FDC700",
       margin: 40,
       marginBottom: 20,
       marginLeft: 67,
       textAlign: "center",
-      paddingTop: 50,
-      lineHeight: 2,
+      paddingTop: 30,
+      lineHeight: 1,
+      boxShadow: "10px 5px 5px black",
     },
     control: {
       padding: theme.spacing(2),
@@ -69,7 +70,7 @@ export default function Calendar() {
         if (merA === "pm") {
           merA = "am";
         }
-        console.log("switched")
+        console.log("switched");
       }
 
       if (timeB.toString() === "12") {
@@ -80,12 +81,10 @@ export default function Calendar() {
         if (merB === "pm") {
           merB = "am";
         }
-        console.log("switched")
+        console.log("switched");
       }
-      console.log(a.title, merA, merB, "times", timeA, timeB)
+      console.log(a.title, merA, merB, "times", timeA, timeB);
       // ^ necessary because 12pm is Noon, not Midnight
-
-
 
       if (merA === "am") {
         timeA = timeA * 100;
@@ -110,7 +109,7 @@ export default function Calendar() {
       return 0;
     }
     return 0;
-  }
+  };
 
   function sortDate(events) {
     let newArray = events.sort(compareDate);
@@ -146,8 +145,6 @@ export default function Calendar() {
   }, [update]);
   //function to add events - DONE
 
-
-
   // function to delete events - DONE (check onclick of the delete icon)
 
   // function to update events
@@ -158,10 +155,10 @@ export default function Calendar() {
     root: {
       background: "linear-gradient(45deg, #FDC700 30%, #FDC700 90%)", // gradient color l -> r
       borderRadius: 3,
-      width: 200,
+      width: 150,
       border: 0,
       color: "black", // text color
-      height: 300,
+      height: 250,
       padding: "0 30px 30px 0",
       boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
       display: "flex",
@@ -183,10 +180,8 @@ export default function Calendar() {
     //   ))}
     // </div>
     <div classname="big-boi-div">
-
       <br /> <br /> <br /> <br />
       <AddEvent setUpdate={setUpdate} />
-
       <div className="card-container">
         <Grid container className={classes.root} spacing={2}>
           <Grid item xs={12}>
@@ -202,29 +197,47 @@ export default function Calendar() {
                     </Typography>
 
                     <br />
-                    <Typography variant="h5">{event.time + " " + event.meridiem}</Typography>
+                    <Typography variant="h5">
+                      {event.time + " " + event.meridiem}
+                    </Typography>
 
                     <br />
                     <Typography variant="h6">{event.title}</Typography>
 
                     <br />
                     <Typography variant="h6">{event.description}</Typography>
-                    <RiDeleteBinLine
-                      onClick={() =>
-                        fetch("http://localhost:8080/events/delete", { method: 'DELETE', headers: { "Accept": "application/json", "Content-Type": "application/json", }, body: JSON.stringify({ "id": event.id }) })
-                          // .then((res) => {
-                          //     return res.json();
-                          // })
-                          .then((obj) => {
-                            console.log("deleting", obj);
-                            setUpdate(Math.random());
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        marginInline: "40px",
+                      }}
+                    >
+                      <RiDeleteBinLine
+                        style={{ marginTop: "10px" }}
+                        onClick={() =>
+                          fetch("http://localhost:8080/events/delete", {
+                            method: "DELETE",
+                            headers: {
+                              Accept: "application/json",
+                              "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ id: event.id }),
                           })
-                      }
-                    />
-                    {/* <RiEditBoxLine
+                            // .then((res) => {
+                            //     return res.json();
+                            // })
+                            .then((obj) => {
+                              console.log("deleting", obj);
+                              setUpdate(Math.random());
+                            })
+                        }
+                      />
+                      {/* <RiEditBoxLine
                       onClick={() => console.log("clicked edit")}
                     /> */}
-                    <UpdateEvent title={event.title} id={event.id} />
+                      <UpdateEvent title={event.title} id={event.id} />
+                    </div>
                   </Paper>
                 </Grid>
               ))}

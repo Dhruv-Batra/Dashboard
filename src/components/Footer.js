@@ -13,7 +13,9 @@ export default function Footer() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="body1" color="003c6c">
-            © 2021 Launch
+            © 2021 Positivity, Respect, Diversity, Education, Comradery. | 1609
+            University Ave, Charlottesville, VA 22903 | Phone: 434-293-4402 |
+            Email: contactus@tjes.edu
           </Typography>
         </Toolbar>
       </AppBar>
