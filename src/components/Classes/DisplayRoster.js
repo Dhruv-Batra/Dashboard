@@ -39,6 +39,8 @@ export default function DisplayRoster(props) {
   //     requestSearch(searched);
   //   };
 
+  const[avg,setAvg]=useState(0);
+
   const StyledTableCell = withStyles((theme) => ({
     head: {
       backgroundColor: theme.palette.info.dark,
