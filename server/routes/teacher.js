@@ -44,6 +44,11 @@ router.post("/update", async (req, res) => {
   res.sendStatus(200);
 });
 
+router.delete("/delete", async (req, res) => {
+  await db.collection("classes").doc(req.body.id).delete();
+  res.sendStatus(200);
+});
+
 router.get("/roster", async (req, res) => {
   console.log(req.query);
   let teachSnapshot = await db

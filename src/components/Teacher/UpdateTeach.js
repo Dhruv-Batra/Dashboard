@@ -116,6 +116,28 @@ export default function UpdateTeach({ teacherId }) {
         />
 
         <DialogActions>
+          <Button
+            onClick={() =>
+              fetch("http://localhost:8080/teacher/delete", {
+                method: "DELETE",
+                headers: {
+                  Accept: "application/json",
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id: teacherId }),
+              })
+                // .then((res) => {
+                //     return res.json();
+                // })
+                .then((obj) => {
+                  console.log("deleting", obj);
+                  setUpdate(Math.random());
+                })
+            }
+            color="secondary"
+          >
+            Delete Teacher
+          </Button>
           <Button onClick={() => handleClose()} color="secondary">
             Cancel
           </Button>
