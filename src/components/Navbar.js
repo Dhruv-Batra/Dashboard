@@ -29,6 +29,7 @@ export default function Navbar() {
 
             <Typography>Menu</Typography>
           </IconButton>
+          <Typography variant="h5" style={{ paddingLeft: "540px" }}> TJ Elementary Dashboard </Typography>
 
           <Menu
             anchorEl={anchorEl}
