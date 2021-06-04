@@ -10,7 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import SearchBar from "material-ui-search-bar";
 import Button from "@material-ui/core/Button";
-import UpdateStud from './UpdateStud'
+import UpdateStud from "./UpdateStud";
 
 const useStyles = makeStyles({
   table: {
@@ -60,6 +60,7 @@ export default function DisplayStudent(props) {
   if (props.student != null) {
     return (
       <div>
+        <h1>Student Directory</h1>
         <SearchBar
           //value={searched}
           placeholder="Search Student"
@@ -125,7 +126,7 @@ export default function DisplayStudent(props) {
                     </Typography>
                   </StyledTableCell>
                   <StyledTableCell align="right">
-                      <UpdateStud/>
+                    <UpdateStud />
                   </StyledTableCell>
                 </StyledTableRow>
               ))}

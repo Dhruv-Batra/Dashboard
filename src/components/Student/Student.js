@@ -8,11 +8,11 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import SearchBar from "material-ui-search-bar";
-import UpdateStud from './UpdateStud'
+import UpdateStud from "./UpdateStud";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import DisplayStudent from "./DisplayStudent";
-import AddStud from './AddStud'
+import AddStud from "./AddStud";
 export default function Student() {
   const [student, setStudent] = useState([]);
 
@@ -38,8 +38,6 @@ export default function Student() {
     call();
   }, []);
 
-
-
   return (
     <div>
       <div
@@ -53,9 +51,9 @@ export default function Student() {
       </div>
       <div
         className="add-button-container"
-        style={{ position: "absolute", left: "75%", top: "30%" }}
+        style={{ position: "absolute", left: "75%", top: "40%" }}
       >
-        <AddStud/>
+        <AddStud />
       </div>
 
       <div

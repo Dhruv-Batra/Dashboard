@@ -60,28 +60,3 @@ export default function Navbar() {
     </div>
   );
 }
-
-// const StyledButton = withStyles({
-//   root: {
-//     background: "linear-gradient(45deg, #FDC700 30%, #FDC700 90%)", // gradient color l -> r
-//     borderRadius: 3,
-//     border: 0,
-//     color: "black", // text color
-//     height: 48,
-//     padding: "0 30px",
-//     boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-//   },
-//   label: {
-//     //textTransform: 'capitalize',
-//   },
-// }) (Button);
-
-// return (
-//   <div
-//     style={{
-//       padding: "15px",
-//       backgroundColor: "#003c6c",
-//       display: "flex",
-//       flexDirection: "row",
-//       justifyContent: "center",
-//     }}

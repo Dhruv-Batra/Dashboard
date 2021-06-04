@@ -17,13 +17,15 @@ import Abby from "./components/Abby";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import Updater from "./components/Calendar/Updater"
+import Updater from "./components/Calendar/Updater";
 // nolan changed this
 function App() {
   return (
     <div
       className="App"
       style={{
+        fontFamily:
+          "Trebuchet MS, Lucida Sans Unicode , Lucida Grande,Lucida Sans, Arial, sans-serif",
         height: "1000px",
         alignItems: "center",
         backgroundColor: "lightgray",
@@ -36,18 +38,18 @@ function App() {
         {/* <Navbar /> */}
         <div>
           <Updater>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <div>
-              <Navbar />
-              <Route path="/teacher" component={Teacher} />
-              <Route path="/student" component={Student} />
-              <Route path="/classes" component={Classes} />
-              <Route path="/calendar" component={Calendar} />
-              <Route path="/dhruv" component={Dhruv} />
-              <Route path="/abby" component={Abby} />
-            </div>
-          </Switch>
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <div>
+                <Navbar />
+                <Route path="/teacher" component={Teacher} />
+                <Route path="/student" component={Student} />
+                <Route path="/classes" component={Classes} />
+                <Route path="/calendar" component={Calendar} />
+                <Route path="/dhruv" component={Dhruv} />
+                <Route path="/abby" component={Abby} />
+              </div>
+            </Switch>
           </Updater>
         </div>
       </BrowserRouter>
